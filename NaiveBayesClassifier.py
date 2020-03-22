@@ -304,6 +304,9 @@ def test(path, fileName):
 
 	# 1st sample
 	testTweet = "@AnderDelPozo @PesqueWhite hahaha yo tambien me he quedao pillao ahahha"
+
+	testTweetLowered = testTweet.lower()
+
 	# create a dictioanry for this sample
 	testVoc = {
 		'a': 0,
@@ -347,6 +350,58 @@ def test(path, fileName):
 	for k in testVoc.keys():
 		print(k, testVoc[k])
 
+	'''
+
+	score(), helper function to calculate Naive Bayes
+	vocInt,
+	0 = converted lowercase a-z
+	1 = lowercase and uppercase a-z
+	2 = lowercase and uppcase a-z and isAlpha
+
+	nGramInt,
+	1 = unigram
+	2 = bigram
+	3 = trigram
+	'''
+
+	# "@AnderDelPozo @PesqueWhite hahaha yo tambien me he quedao pillao ahahha"
+	
+	def score(tweet, vocInt, nGramInt):
+
+		# for vocInt = 0 and nGramInt = 1
+
+		# index of the character we're scanning in the tweet
+		currentIndex = 0
+
+		# initialize the scores to their respective probabilities, P(eu), P(ca), etc...
+		eu_score = characterCounterEU / characterCounterTotal 
+		ca_score = characterCounterCA / characterCounterTotal 
+		gl_score = characterCounterGL / characterCounterTotal
+		es_score = characterCounterES / characterCounterTotal
+		en_score = characterCounterEN / characterCounterTotal
+		pt_score = characterCounterPT / characterCounterTotal
+
+		# update the scores if the character is in the vocabulary
+		for k in voc0size1_eu.keys():
+			if tweet[currentIndex] == k:
+				eu_score *= voc0size1_eu[k] / characterCounterEU # multiply by P(character | eu)
+				ca_score *= voc0size1_ca[k] / characterCounterCA # multiply by P(character | ca)
+				gl_score *= voc0size1_gl[k] / characterCounterGL # multiply by P(character | gl)
+				es_score *= voc0size1_es[k] / characterCounterES # multiply by P(character | es)
+				en_score *= voc0size1_en[k] / characterCounterEN # multiply by P(character | en)
+				pt_score *= voc0size1_pt[k] / characterCounterPT # multiply by P(character | pt)
+
+		# show scores
+		print(eu_score)
+		print(ca_score)
+		print(gl_score)
+		print(es_score)
+		print(en_score)
+		print(pt_score)
+
+	# test score function with example tweet
+	tweetEx1 = "Moitas gracias  @FelixCastro_L 😊 eso non se duda jajaja".lower()
+	score(tweetEx1, 0, 1)
 
 # main
 test('./', 'training-tweets')

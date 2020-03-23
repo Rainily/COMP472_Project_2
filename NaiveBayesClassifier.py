@@ -1,3 +1,4 @@
+import re
 # v = 0 , a-z lowercase
 # n-gram size = 1
 
@@ -405,3 +406,31 @@ def test(path, fileName):
 
 # main
 test('./', 'training-tweets')
+
+#extracing @username from tweet msg
+testTweet = "@AnderDelPozo @PesqueWhite hahaha yo tambien me he quedao pillao ahahha"
+
+#detects user tag
+tagUser = re.compile('@\w+\s')
+
+#detects email address
+email = re.compile('\w+@\w+\.[a-z]{3}')
+text="To email Guido, @AnderDelPozo @PesqueWhite try guido@python.org. or the older address guido@google.com."
+test2=email.findall(text)
+
+##test3=tagUser.findall(text)
+test3=tagUser.findall(testTweet)
+
+print(test2)
+print(test3)
+print(testTweet)
+print(len(test3))
+
+#successfully removed @userTags. repeat same for removing emails
+testTweet = testTweet.replace(test3[0], '')
+print(testTweet)
+testTweet = testTweet.replace(test3[1], '')
+print(testTweet)
+
+#extracting domain URL's
+#re.findall(r'(https?://[^\s]+)', myString)

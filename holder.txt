@@ -1,0 +1,44 @@
+#detects user tag
+tagUser = re.compile('@\w+\s')
+
+#detects email address
+email = re.compile('\w+@\w+\.[a-z]{3}')
+text="To email Guido, @AnderDelPozo @PesqueWhite try guido@python.org. or the older address guido@google.com."
+test2=email.findall(text)
+
+##test3=tagUser.findall(text)
+test3=tagUser.findall(text)
+
+#print(test2)
+#print(test3)
+#print(testTweet)
+#print(len(test3))
+
+#successfully removed @userTags. repeat same for removing emails
+#testTweet = testTweet.replace(test3[0], '')
+#print(testTweet)
+#testTweet = testTweet.replace(test3[1], '')
+#print(testTweet)
+
+#extracting domain URL's
+myString = "¿Mi idolo? http://t.co/800CHwARld Lo que mas quiero en este mundo. http://t.co/6xyXrhzAil"
+urlList = re.findall(r'(https?://[^\s]+)', myString)
+
+#extracting emoji or weird symbols
+testTweet2 = "Con los aitas de compras 😋😋"
+emojiAndSymbolList = re.findall(r'[^\w\s,]', testTweet2)
+
+testTweet3 = "¿Mi idolo? Buenaas nocheees ♥♥♥√√√√ mañana tolosa *-* "
+emojiAndSymbolList2 = re.findall(r'[^\w\s,]', testTweet3)
+
+testTweet4 = "Te vi y me enamore #SuBffWasHere✌😎"
+emojiAndSymbolList3 = re.findall(r'[^\w\s,]', testTweet4)
+
+#print(testTweet2)
+#print(emojiAndSymbolList)
+#print(emojiAndSymbolList2)
+#print(emojiAndSymbolList3)
+
+testTweet5= "@Dorkaa_Baranya  congrats bae! you make me cry ;'( I can't beliebe OMG! thank'youuu x&lt;33333"
+ltList4 = re.findall(r'&lt', testTweet5)
+#print(ltList4)

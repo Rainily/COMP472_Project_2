@@ -243,14 +243,12 @@ voc0size2_gl = createBigramDictionary(alphabetListVoc0)
 voc0size2_es = createBigramDictionary(alphabetListVoc0)
 voc0size2_en = createBigramDictionary(alphabetListVoc0)
 voc0size2_pt = createBigramDictionary(alphabetListVoc0)
-
 voc0size3_eu = createTrigramDictionary(alphabetListVoc0)
 voc0size3_ca = createTrigramDictionary(alphabetListVoc0)
 voc0size3_gl = createTrigramDictionary(alphabetListVoc0)
 voc0size3_es = createTrigramDictionary(alphabetListVoc0)
 voc0size3_en = createTrigramDictionary(alphabetListVoc0)
 voc0size3_pt = createTrigramDictionary(alphabetListVoc0)
-
 
 # create class
 
@@ -662,6 +660,7 @@ class AI:
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
 							
+							# Breaks when Third Digit reaches length of tweet
 							if(thirdDigitIndex==tweetLength-1):
 								break
 
@@ -681,6 +680,7 @@ class AI:
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
 
+							# Breaks when Third Digit reaches length of tweet
 							if(thirdDigitIndex==tweetLength-1):
 								break
 							
@@ -700,6 +700,7 @@ class AI:
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
 							
+							# Breaks when Third Digit reaches length of tweet
 							if(thirdDigitIndex==tweetLength-1):
 								break
 							
@@ -719,6 +720,7 @@ class AI:
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
 							
+							# Breaks when Third Digit reaches length of tweet
 							if(thirdDigitIndex==tweetLength-1):
 								break
 							
@@ -738,6 +740,7 @@ class AI:
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
 							
+							# Breaks when Third Digit reaches length of tweet
 							if(thirdDigitIndex==tweetLength-1):
 								break
 							
@@ -757,6 +760,7 @@ class AI:
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
 							
+							# Breaks when Third Digit reaches length of tweet
 							if(thirdDigitIndex==tweetLength-1):
 								break
 							

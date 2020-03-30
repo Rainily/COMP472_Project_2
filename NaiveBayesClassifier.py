@@ -716,3 +716,5 @@ class AI:
 AI_one = AI()
 AI_one.train('./', 'training-tweets-half', 2)
 AI_one.scoreFile('./', 'test-tweets-given', 2)
+
+#Test

@@ -177,6 +177,32 @@ class AI:
 			print("PT SCORE:" + str(pt_score))
 			'''
 
+			biggestValue = eu_score
+			answer = 'eu'
+
+			if ca_score > biggestValue:
+				biggestValue = ca_score
+				answer = 'ca'
+			if gl_score > biggestValue:
+				biggestValue = gl_score
+				answer = 'gl'
+			if es_score > biggestValue:
+				biggestValue = es_score
+				answer = 'es'
+			if en_score > biggestValue:
+				biggestValue = en_score
+				answer = 'en'
+			if pt_score > biggestValue:
+				biggestValue = pt_score
+				answer = 'pt'
+
+			#print("ANSWER: " + answer)
+
+			return answer, biggestValue
+
+
+
+
 		elif nGramInt == 2:
 			# for vocInt = 0 and nGramInt = 1
 
@@ -328,6 +354,9 @@ class AI:
 
 		lineCounter = 0
 
+		# Temporary Counter
+		randomCounter = 0
+
 		if nGramInt == 1:
 
 			# read the input file
@@ -410,6 +439,8 @@ class AI:
 							for k in voc0size1_pt.keys():
 								if tweet[x] == k:
 									voc0size1_pt[k] += 1
+				
+
 		elif nGramInt == 2:
 			# read the input file
 			with open(fullPath, encoding="utf8") as f:
@@ -648,24 +679,46 @@ class AI:
 							thirdDigitIndex += 1
 					lineCounter += 1
 
-					print()
-					print(lineCounter)
-					print()
+					# print()
+					# print(lineCounter)
+					# print()
 
-					print("------------------------")
-					print(self.characterCounterEN)
-					print(self.characterCounterCA)
-					print(self.characterCounterGL)
-					print(self.characterCounterES)
-					print(self.characterCounterEN)
-					print(self.characterCounterPT)
-					print(self.characterCounterTotal)
+					# print("------------------------")
+					# print(self.characterCounterEN)
+					# print(self.characterCounterCA)
+					# print(self.characterCounterGL)
+					# print(self.characterCounterES)
+					# print(self.characterCounterEN)
+					# print(self.characterCounterPT)
+					# print(self.characterCounterTotal)
+
 
 
 		# test score function with example tweet
-		#tweetEx1 = "Stoked to be part of the".lower()
+		# tweetEx1 = "@AnderDelPozo @PesqueWhite hahaha yo tambien me he quedao pillao ahahha".lower()
+		
+		#Writing into the trace file for Unigram
+		testPath = "trace_0_"+str(nGramInt)+"_0.5.txt"
+		randomCounter = 0
+		with open(p + "test-tweets-given.txt", encoding="utf8") as w:
+			for line in w:
+				#if randomCounter == 10:
+				#	break
 
-		#self.score(tweetEx1, 0, nGramInt, 0.5)
+				word = line.split("\t")
+				actualLanguage, actualScore = self.score(word[3], 0, nGramInt, 0.5)
+				if actualLanguage == word[2]:
+					correctOrNot = "Correct"
+				else:
+					correctOrNot = "Wrong"
+				
+
+				writeFile = open(testPath,"a+", encoding="utf8")
+				writeFile.write(word[0] + "  " + actualLanguage + "  " + str(actualScore) + "  " + word[2] + "  " + correctOrNot + "\n")
+				writeFile.close()
+				
+				#randomCounter += 1
+		
 
 
 	def scoreFile (self, path, fileName, nGramInt):
@@ -714,7 +767,7 @@ class AI:
 
 # main
 AI_one = AI()
-AI_one.train('./', 'training-tweets-half', 2)
-AI_one.scoreFile('./', 'test-tweets-given', 2)
+AI_one.train('./', 'training-tweets-half', 1)
+# AI_one.scoreFile('./', 'test-tweets-given', 2)
 
 #Test

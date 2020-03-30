@@ -2,185 +2,6 @@ import math
 # v = 0 , a-z lowercase
 # n-gram size = 1
 
-# eu
-voc0size1_eu = {
-	'a': 0,
-	'b': 0,
-	'c': 0,
-	'd': 0,
-	'e': 0,
-	'f': 0,
-	'g': 0,
-	'h': 0,
-	'i': 0,
-	'j': 0,
-	'k': 0,
-	'l': 0,
-	'm': 0,
-	'n': 0,
-	'o': 0,
-	'p': 0,
-	'q': 0,
-	'r': 0,
-	's': 0,
-	't': 0,
-	'u': 0,
-	'v': 0,
-	'w': 0,
-	'x': 0,
-	'y': 0,
-	'z': 0
-}
-
-# ca
-voc0size1_ca = {
-	'a': 0,
-	'b': 0,
-	'c': 0,
-	'd': 0,
-	'e': 0,
-	'f': 0,
-	'g': 0,
-	'h': 0,
-	'i': 0,
-	'j': 0,
-	'k': 0,
-	'l': 0,
-	'm': 0,
-	'n': 0,
-	'o': 0,
-	'p': 0,
-	'q': 0,
-	'r': 0,
-	's': 0,
-	't': 0,
-	'u': 0,
-	'v': 0,
-	'w': 0,
-	'x': 0,
-	'y': 0,
-	'z': 0
-}
-
-# gl
-voc0size1_gl = {
-	'a': 0,
-	'b': 0,
-	'c': 0,
-	'd': 0,
-	'e': 0,
-	'f': 0,
-	'g': 0,
-	'h': 0,
-	'i': 0,
-	'j': 0,
-	'k': 0,
-	'l': 0,
-	'm': 0,
-	'n': 0,
-	'o': 0,
-	'p': 0,
-	'q': 0,
-	'r': 0,
-	's': 0,
-	't': 0,
-	'u': 0,
-	'v': 0,
-	'w': 0,
-	'x': 0,
-	'y': 0,
-	'z': 0
-}
-
-# es
-voc0size1_es = {
-	'a': 0,
-	'b': 0,
-	'c': 0,
-	'd': 0,
-	'e': 0,
-	'f': 0,
-	'g': 0,
-	'h': 0,
-	'i': 0,
-	'j': 0,
-	'k': 0,
-	'l': 0,
-	'm': 0,
-	'n': 0,
-	'o': 0,
-	'p': 0,
-	'q': 0,
-	'r': 0,
-	's': 0,
-	't': 0,
-	'u': 0,
-	'v': 0,
-	'w': 0,
-	'x': 0,
-	'y': 0,
-	'z': 0
-}
-
-# en
-voc0size1_en = {
-	'a': 0,
-	'b': 0,
-	'c': 0,
-	'd': 0,
-	'e': 0,
-	'f': 0,
-	'g': 0,
-	'h': 0,
-	'i': 0,
-	'j': 0,
-	'k': 0,
-	'l': 0,
-	'm': 0,
-	'n': 0,
-	'o': 0,
-	'p': 0,
-	'q': 0,
-	'r': 0,
-	's': 0,
-	't': 0,
-	'u': 0,
-	'v': 0,
-	'w': 0,
-	'x': 0,
-	'y': 0,
-	'z': 0
-}
-
-# pt
-voc0size1_pt = {
-	'a': 0,
-	'b': 0,
-	'c': 0,
-	'd': 0,
-	'e': 0,
-	'f': 0,
-	'g': 0,
-	'h': 0,
-	'i': 0,
-	'j': 0,
-	'k': 0,
-	'l': 0,
-	'm': 0,
-	'n': 0,
-	'o': 0,
-	'p': 0,
-	'q': 0,
-	'r': 0,
-	's': 0,
-	't': 0,
-	'u': 0,
-	'v': 0,
-	'w': 0,
-	'x': 0,
-	'y': 0,
-	'z': 0
-}
 
 # DYNAMIC GENERATION
 
@@ -213,6 +34,42 @@ alphabetListVoc0.append('w')
 alphabetListVoc0.append('x')
 alphabetListVoc0.append('y')
 alphabetListVoc0.append('z')
+alphabetListVoc0.append('A')
+alphabetListVoc0.append('B')
+alphabetListVoc0.append('C')
+alphabetListVoc0.append('D')
+alphabetListVoc0.append('E')
+alphabetListVoc0.append('F')
+alphabetListVoc0.append('G')
+alphabetListVoc0.append('H')
+alphabetListVoc0.append('I')
+alphabetListVoc0.append('J')
+alphabetListVoc0.append('K')
+alphabetListVoc0.append('L')
+alphabetListVoc0.append('M')
+alphabetListVoc0.append('N')
+alphabetListVoc0.append('O')
+alphabetListVoc0.append('P')
+alphabetListVoc0.append('Q')
+alphabetListVoc0.append('R')
+alphabetListVoc0.append('S')
+alphabetListVoc0.append('T')
+alphabetListVoc0.append('U')
+alphabetListVoc0.append('V')
+alphabetListVoc0.append('W')
+alphabetListVoc0.append('X')
+alphabetListVoc0.append('Y')
+alphabetListVoc0.append('Z')
+
+
+def createUnigramDictionary(vocabularyList):
+	temporaryDictionary = {}
+
+	for x in range(len(vocabularyList)):
+		keyName = vocabularyList[x]
+		temporaryDictionary[keyName] = 0
+
+	return temporaryDictionary
 
 def createBigramDictionary(vocabularyList):
 
@@ -237,18 +94,27 @@ def createTrigramDictionary(vocabularyList):
 
 	return temporaryDictionary
 
+voc0size1_eu = createUnigramDictionary(alphabetListVoc0)
+voc0size1_ca = createUnigramDictionary(alphabetListVoc0)
+voc0size1_gl = createUnigramDictionary(alphabetListVoc0)
+voc0size1_es = createUnigramDictionary(alphabetListVoc0)
+voc0size1_en = createUnigramDictionary(alphabetListVoc0)
+voc0size1_pt = createUnigramDictionary(alphabetListVoc0)
+
 voc0size2_eu = createBigramDictionary(alphabetListVoc0)
 voc0size2_ca = createBigramDictionary(alphabetListVoc0)
 voc0size2_gl = createBigramDictionary(alphabetListVoc0)
 voc0size2_es = createBigramDictionary(alphabetListVoc0)
 voc0size2_en = createBigramDictionary(alphabetListVoc0)
 voc0size2_pt = createBigramDictionary(alphabetListVoc0)
+
 voc0size3_eu = createTrigramDictionary(alphabetListVoc0)
 voc0size3_ca = createTrigramDictionary(alphabetListVoc0)
 voc0size3_gl = createTrigramDictionary(alphabetListVoc0)
 voc0size3_es = createTrigramDictionary(alphabetListVoc0)
 voc0size3_en = createTrigramDictionary(alphabetListVoc0)
 voc0size3_pt = createTrigramDictionary(alphabetListVoc0)
+
 
 # create class
 
@@ -302,12 +168,14 @@ class AI:
 						pt_score *= math.log(voc0size1_pt[k] / self.characterCounterPT) # multiply by P(character | pt)
 
 			# show scores
+			'''
 			print("EU SCORE:" + str(eu_score))
 			print("CA SCORE:" + str(ca_score))
 			print("GL SCORE:" + str(gl_score))
 			print("ES SCORE:" + str(es_score))
 			print("EN SCORE:" + str(en_score))
 			print("PT SCORE:" + str(pt_score))
+			'''
 
 		elif nGramInt == 2:
 			# for vocInt = 0 and nGramInt = 1
@@ -315,13 +183,6 @@ class AI:
 			# index of the character we're scanning in the tweet
 			firstDigitIndex = 0
 			secondDigitIndex = 1
-
-			print(self.characterCounterEN)
-			print(self.characterCounterCA)
-			print(self.characterCounterGL)
-			print(self.characterCounterES)
-			print(self.characterCounterEN)
-			print(self.characterCounterPT)
 
 			# initialize the scores to their respective probabilities, P(eu), P(ca), etc...
 			eu_score = math.log(self.characterCounterEU / self.characterCounterTotal)
@@ -349,7 +210,7 @@ class AI:
 				self.characterCounterPT += len(voc0size2_pt) * smoothingValue
 
 				# update the scores if the character is in the vocabulary
-				for k in voc0size1_eu.keys():
+				for k in voc0size2_eu.keys():
 					if tweet[firstDigitIndex] + tweet[secondDigitIndex] == k:
 						eu_score *= math.log(voc0size2_eu[k] / self.characterCounterEU) # multiply by P(character | eu)
 						ca_score *= math.log(voc0size2_ca[k] / self.characterCounterCA) # multiply by P(character | ca)
@@ -360,6 +221,17 @@ class AI:
 						firstDigitIndex += 1
 						secondDigitIndex += 1
 
+
+			# show scores
+			'''
+			print("EU SCORE:" + str(eu_score))
+			print("CA SCORE:" + str(ca_score))
+			print("GL SCORE:" + str(gl_score))
+			print("ES SCORE:" + str(es_score))
+			print("EN SCORE:" + str(en_score))
+			print("PT SCORE:" + str(pt_score))
+			'''
+
 		elif nGramInt == 3:
 			# for vocInt = 0 and nGramInt = 1
 
@@ -367,13 +239,6 @@ class AI:
 			firstDigitIndex = 0
 			secondDigitIndex = 1
 			thirdDigitIndex = 2
-
-			print(self.characterCounterEN)
-			print(self.characterCounterCA)
-			print(self.characterCounterGL)
-			print(self.characterCounterES)
-			print(self.characterCounterEN)
-			print(self.characterCounterPT)
 
 			# initialize the scores to their respective probabilities, P(eu), P(ca), etc...
 			eu_score = math.log(self.characterCounterEU / self.characterCounterTotal)
@@ -401,6 +266,7 @@ class AI:
 				self.characterCounterPT += len(voc0size3_pt) * smoothingValue
 
 				# update the scores if the character is in the vocabulary
+				# na
 				for k in voc0size3_eu.keys():
 					if tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex] == k:
 						eu_score *= math.log(voc0size3_eu[k] / self.characterCounterEU) # multiply by P(character | eu)
@@ -413,13 +279,40 @@ class AI:
 						secondDigitIndex += 1
 						thirdDigitIndex += 1
 
+
 			# show scores
+			'''
 			print("EU SCORE:" + str(eu_score))
 			print("CA SCORE:" + str(ca_score))
 			print("GL SCORE:" + str(gl_score))
 			print("ES SCORE:" + str(es_score))
 			print("EN SCORE:" + str(en_score))
 			print("PT SCORE:" + str(pt_score))
+			'''
+
+		biggestValue = eu_score
+		answer = 'EU'
+
+		if ca_score > biggestValue:
+			biggestValue = ca_score
+			answer = 'CA'
+		if gl_score > biggestValue:
+			biggestValue = gl_score
+			answer = 'GL'
+		if es_score > biggestValue:
+			biggestValue = es_score
+			answer = 'ES'
+		if en_score > biggestValue:
+			biggestValue = en_score
+			answer = 'EN'
+		if pt_score > biggestValue:
+			biggestValue = pt_score
+			answer = 'PT'
+
+		#print("ANSWER: " + answer)
+
+		return answer
+
 
 	def train(self, path, fileName, nGramInt):
 		p = path # path to the folder with input files
@@ -626,6 +519,19 @@ class AI:
 							secondDigitIndex += 1
 					lineCounter += 1
 
+					print()
+					print(lineCounter)
+					print()
+
+					print("------------------------")
+					print(self.characterCounterEN)
+					print(self.characterCounterCA)
+					print(self.characterCounterGL)
+					print(self.characterCounterES)
+					print(self.characterCounterEN)
+					print(self.characterCounterPT)
+					print(self.characterCounterTotal)
+
 		elif nGramInt == 3:
 			# read the input file
 			with open(fullPath, encoding="utf8") as f:
@@ -653,17 +559,12 @@ class AI:
 					if language == 'eu':
 						tweetLength = len(tweet) # length of the tweet being scanned
 						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
+						for x in range(0, tweetLength - 2):
 							self.characterCounterTotal += 1 # increment total characters scanned
 							self.characterCounterEU += 1 # increment total EU characters scanned
 							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							
-							# Breaks when Third Digit reaches length of tweet
-							if(thirdDigitIndex==tweetLength-1):
-								break
-
 							for k in voc0size3_eu.keys(): 
 								if currentSubdivision == k:
 									voc0size3_eu[k] += 1
@@ -673,17 +574,12 @@ class AI:
 					elif language == 'ca':
 						tweetLength = len(tweet) # length of the tweet being scanned
 						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
+						for x in range(0, tweetLength - 2):
 							self.characterCounterTotal += 1 # increment total characters scanned
 							self.characterCounterCA += 1 # increment total EU characters scanned
 							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-
-							# Breaks when Third Digit reaches length of tweet
-							if(thirdDigitIndex==tweetLength-1):
-								break
-							
 							for k in voc0size3_ca.keys(): 
 								if currentSubdivision == k:
 									voc0size3_ca[k] += 1
@@ -693,17 +589,12 @@ class AI:
 					elif language == 'gl':
 						tweetLength = len(tweet) # length of the tweet being scanned
 						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
+						for x in range(0, tweetLength - 2):
 							self.characterCounterTotal += 1 # increment total characters scanned
 							self.characterCounterGL += 1 # increment total EU characters scanned
 							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							
-							# Breaks when Third Digit reaches length of tweet
-							if(thirdDigitIndex==tweetLength-1):
-								break
-							
 							for k in voc0size3_gl.keys(): 
 								if currentSubdivision == k:
 									voc0size3_gl[k] += 1
@@ -713,18 +604,13 @@ class AI:
 					elif language == 'es':
 						tweetLength = len(tweet) # length of the tweet being scanned
 						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
+						for x in range(0, tweetLength - 2):
 							self.characterCounterTotal += 1 # increment total characters scanned
 							self.characterCounterES += 1 # increment total EU characters scanned
 							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							
-							# Breaks when Third Digit reaches length of tweet
-							if(thirdDigitIndex==tweetLength-1):
-								break
-							
-							for k in voc0size3_es.keys():
+							for k in voc0size3_es.keys(): 
 								if currentSubdivision == k:
 									voc0size3_es[k] += 1
 							firstDigitIndex += 1
@@ -733,17 +619,12 @@ class AI:
 					elif language == 'en':
 						tweetLength = len(tweet) # length of the tweet being scanned
 						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
+						for x in range(0, tweetLength - 2):
 							self.characterCounterTotal += 1 # increment total characters scanned
 							self.characterCounterEN += 1 # increment total EU characters scanned
 							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							
-							# Breaks when Third Digit reaches length of tweet
-							if(thirdDigitIndex==tweetLength-1):
-								break
-							
 							for k in voc0size3_en.keys(): 
 								if currentSubdivision == k:
 									voc0size3_en[k] += 1
@@ -753,17 +634,12 @@ class AI:
 					elif language == 'pt':
 						tweetLength = len(tweet) # length of the tweet being scanned
 						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
+						for x in range(0, tweetLength - 2):
 							self.characterCounterTotal += 1 # increment total characters scanned
 							self.characterCounterPT += 1 # increment total EU characters scanned
 							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
 
 							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							
-							# Breaks when Third Digit reaches length of tweet
-							if(thirdDigitIndex==tweetLength-1):
-								break
-							
 							for k in voc0size3_pt.keys(): 
 								if currentSubdivision == k:
 									voc0size3_pt[k] += 1
@@ -784,11 +660,59 @@ class AI:
 					print(self.characterCounterEN)
 					print(self.characterCounterPT)
 					print(self.characterCounterTotal)
+
+
 		# test score function with example tweet
-		tweetEx1 = "bainan etzaite otoi nitaz betiko agurtu".lower()
-		self.score(tweetEx1, 0, nGramInt, 0.5)
+		#tweetEx1 = "Stoked to be part of the".lower()
+
+		#self.score(tweetEx1, 0, nGramInt, 0.5)
+
+
+	def scoreFile (self, path, fileName, nGramInt):
+		p = path # path to the folder with input files
+		f = fileName + '.txt' # the name of input file
+		fullPath = p + f # full path
+
+		tweetID =  ''
+		userID = ''
+		language = ''
+		tweet = ''
+
+		counter = 0
+		lineCounter = 0
+		rightCounter = 0
+
+		# read the input file
+		with open(fullPath, encoding="utf8") as f:
+			# split every number in a line
+			for line in f:
+				# populate every variable
+				for word in line.split("\t"):
+					if counter == 0:
+						tweetID = word
+						counter += 1 
+					elif counter == 1:
+						userID = word
+						counter += 1
+					elif counter == 2:
+						language = word
+						counter += 1
+					else:
+						tweet = word
+						counter = 0
+
+				print(lineCounter)
+				answer = self.score(tweet, 0, nGramInt, 0.5).lower()
+
+				if answer == language:
+					rightCounter += 1
+
+				lineCounter += 1
+
+			print(str(rightCounter) + "/" + str(lineCounter))
 
 
 # main
 AI_one = AI()
-AI_one.train('./', 'training-tweets-half2', 3)
+AI_one.train('./', 'training-tweets-half', 2)
+AI_one.scoreFile('./', 'test-tweets-given', 2)

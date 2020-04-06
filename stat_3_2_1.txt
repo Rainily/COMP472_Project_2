@@ -1,0 +1,57 @@
+vocInt = 3, nGramInt = 2, smoothingValue = 1
+
+Training Information:
+EU tweets: 374
+CA tweets: 1493
+GL tweets: 456
+ES tweets: 12855
+EN tweets: 971
+PT tweets: 2169
+Total training tweets: 18318
+
+Accuracy:
+3977/7000 = ~56.81%
+
+Precision:
+EU: 0/1 =  ~0.0%
+CA: 0/0 =  ~0%
+GL: 0/0 =  ~0%
+ES: 3971/6992 =  ~56.79%
+EN: 2/2 =  ~100.0%
+PT: 4/5 =  ~80.0%
+
+Recall:
+EU: 0/380 =  ~0.0%
+CA: 0/75 =  ~0.0%
+GL: 0/1 =  ~0.0%
+ES: 3971/3973 =  ~99.95%
+EN: 2/516 =  ~0.39%
+PT: 4/2055 =  ~0.19%
+
+F1-measure:
+EU: ~0.0%
+CA: ~0.0%
+GL: ~0.0%
+ES: ~99.95%
+EN: ~0.39%
+PT: ~0.19%
+
+Average Precision:
+~39.47%
+
+Average Recall:
+~16.76%
+
+Average F1-measure:
+~12.27%
+
+Weighted Precision:
+~63.09%
+
+Weighted Recall:
+~56.81%
+
+Weighted F1-measure:
+~41.28%
+
+Test Time: ~227.808 seconds.

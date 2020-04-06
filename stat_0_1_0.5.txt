@@ -1,0 +1,44 @@
+Accuracy:
+10/20 = ~50.0%
+
+Precision:
+EU: 3/5 =  ~60.0%
+CA: 0/3 =  ~0.0%
+GL: 0/3 =  ~0.0%
+ES: 7/7 =  ~100.0%
+EN: 0/2 =  ~0.0%
+PT: 0/0 =  ~0%
+
+Recall:
+EU: 3/3 =  ~100.0%
+CA: 0/0 =  ~0%
+GL: 0/0 =  ~0%
+ES: 7/17 =  ~41.18%
+EN: 0/0 =  ~0%
+PT: 0/0 =  ~0%
+
+F1-measure:
+EU: ~100.0%
+CA: ~0%
+GL: ~0%
+ES: ~41.18%
+EN: ~0%
+PT: ~0%
+
+Average Precision:
+~26.67%
+
+Average Recall:
+~23.53%
+
+Average F1-measure:
+~22.22%
+
+Weighted Precision:
+~94.0%
+
+Weighted Recall:
+~50.0%
+
+Weighted F1-measure:
+~60.83%

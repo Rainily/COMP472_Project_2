@@ -1,772 +1,4 @@
-<<<<<<< Updated upstream
 import math
-# v = 0 , a-z lowercase
-# n-gram size = 1
-
-
-# DYNAMIC GENERATION
-
-# Vocabulary 0, a-z lowercase
-alphabetListVoc0 = []
-
-alphabetListVoc0.append('a')
-alphabetListVoc0.append('b')
-alphabetListVoc0.append('c')
-alphabetListVoc0.append('d')
-alphabetListVoc0.append('e')
-alphabetListVoc0.append('f')
-alphabetListVoc0.append('g')
-alphabetListVoc0.append('h')
-alphabetListVoc0.append('i')
-alphabetListVoc0.append('j')
-alphabetListVoc0.append('k')
-alphabetListVoc0.append('l')
-alphabetListVoc0.append('m')
-alphabetListVoc0.append('n')
-alphabetListVoc0.append('o')
-alphabetListVoc0.append('p')
-alphabetListVoc0.append('q')
-alphabetListVoc0.append('r')
-alphabetListVoc0.append('s')
-alphabetListVoc0.append('t')
-alphabetListVoc0.append('u')
-alphabetListVoc0.append('v')
-alphabetListVoc0.append('w')
-alphabetListVoc0.append('x')
-alphabetListVoc0.append('y')
-alphabetListVoc0.append('z')
-alphabetListVoc0.append('A')
-alphabetListVoc0.append('B')
-alphabetListVoc0.append('C')
-alphabetListVoc0.append('D')
-alphabetListVoc0.append('E')
-alphabetListVoc0.append('F')
-alphabetListVoc0.append('G')
-alphabetListVoc0.append('H')
-alphabetListVoc0.append('I')
-alphabetListVoc0.append('J')
-alphabetListVoc0.append('K')
-alphabetListVoc0.append('L')
-alphabetListVoc0.append('M')
-alphabetListVoc0.append('N')
-alphabetListVoc0.append('O')
-alphabetListVoc0.append('P')
-alphabetListVoc0.append('Q')
-alphabetListVoc0.append('R')
-alphabetListVoc0.append('S')
-alphabetListVoc0.append('T')
-alphabetListVoc0.append('U')
-alphabetListVoc0.append('V')
-alphabetListVoc0.append('W')
-alphabetListVoc0.append('X')
-alphabetListVoc0.append('Y')
-alphabetListVoc0.append('Z')
-
-
-def createUnigramDictionary(vocabularyList):
-	temporaryDictionary = {}
-
-	for x in range(len(vocabularyList)):
-		keyName = vocabularyList[x]
-		temporaryDictionary[keyName] = 0
-
-	return temporaryDictionary
-
-def createBigramDictionary(vocabularyList):
-
-	temporaryDictionary = {}
-
-	for x in range(len(vocabularyList)):
-		for y in range(len(vocabularyList)):
-			keyName = vocabularyList[x] + vocabularyList[y]
-			temporaryDictionary[keyName] = 0
-
-	return temporaryDictionary
-
-def createTrigramDictionary(vocabularyList):
-	
-	temporaryDictionary = {}
-
-	for x in range(len(vocabularyList)):
-		for y in range(len(vocabularyList)):
-			for z in range(len(vocabularyList)):
-				keyName = vocabularyList[x] + vocabularyList[y] + vocabularyList[z] 
-				temporaryDictionary[keyName] = 0
-
-<<<<<<< Updated upstream
-	return temporaryDictionary
-
-voc0size1_eu = createUnigramDictionary(alphabetListVoc0)
-voc0size1_ca = createUnigramDictionary(alphabetListVoc0)
-voc0size1_gl = createUnigramDictionary(alphabetListVoc0)
-voc0size1_es = createUnigramDictionary(alphabetListVoc0)
-voc0size1_en = createUnigramDictionary(alphabetListVoc0)
-voc0size1_pt = createUnigramDictionary(alphabetListVoc0)
-
-voc0size2_eu = createBigramDictionary(alphabetListVoc0)
-voc0size2_ca = createBigramDictionary(alphabetListVoc0)
-voc0size2_gl = createBigramDictionary(alphabetListVoc0)
-voc0size2_es = createBigramDictionary(alphabetListVoc0)
-voc0size2_en = createBigramDictionary(alphabetListVoc0)
-voc0size2_pt = createBigramDictionary(alphabetListVoc0)
-
-voc0size3_eu = createTrigramDictionary(alphabetListVoc0)
-voc0size3_ca = createTrigramDictionary(alphabetListVoc0)
-voc0size3_gl = createTrigramDictionary(alphabetListVoc0)
-voc0size3_es = createTrigramDictionary(alphabetListVoc0)
-voc0size3_en = createTrigramDictionary(alphabetListVoc0)
-voc0size3_pt = createTrigramDictionary(alphabetListVoc0)
-=======
-    return temporaryDictionary
->>>>>>> Stashed changes
-
-
-# create class
-
-class AI:
-<<<<<<< Updated upstream
-	def __init__(self):
-		self.characterCounterEU = 0 # total number of EU characters scanned
-		self.characterCounterCA = 0 # total number of CA characters scanned
-		self.characterCounterGL = 0 # total number of GL characters scanned
-		self.characterCounterES = 0 # total number of ES characters scanned
-		self.characterCounterEN = 0 # total number of EN characters scanned
-		self.characterCounterPT = 0 # total number of PT characters scanned
-		self.characterCounterTotal = 0
-
-		# testTweet = 'blah blah blah'
-	def score(self, tweet, vocInt, nGramInt, smoothingValue):
-		if nGramInt == 1:
-
-
-			# initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-			eu_score = math.log(self.characterCounterEU / self.characterCounterTotal) # P(eu)
-			ca_score = math.log(self.characterCounterCA / self.characterCounterTotal)
-			gl_score = math.log(self.characterCounterGL / self.characterCounterTotal)
-			es_score = math.log(self.characterCounterES / self.characterCounterTotal)
-			en_score = math.log(self.characterCounterEN / self.characterCounterTotal)
-			pt_score = math.log(self.characterCounterPT / self.characterCounterTotal)
-			
-			for k in voc0size1_eu.keys():
-				voc0size1_eu[k] += smoothingValue
-				voc0size1_ca[k] += smoothingValue
-				voc0size1_gl[k] += smoothingValue
-				voc0size1_es[k] += smoothingValue
-				voc0size1_en[k] += smoothingValue
-				voc0size1_pt[k] += smoothingValue
-
-			self.characterCounterEU += len(voc0size1_eu) * smoothingValue
-			self.characterCounterCA += len(voc0size1_ca) * smoothingValue
-			self.characterCounterGL += len(voc0size1_gl) * smoothingValue
-			self.characterCounterES += len(voc0size1_es) * smoothingValue
-			self.characterCounterEN += len(voc0size1_en) * smoothingValue
-			self.characterCounterPT += len(voc0size1_pt) * smoothingValue
-
-			for x in range(len(tweet)):
-				# update the scores if the character is in the vocabulary
-				for k in voc0size1_eu.keys():
-					if tweet[x] == k:
-						eu_score *= math.log(voc0size1_eu[k] / self.characterCounterEU) # multiply by P(character | eu)
-						ca_score *= math.log(voc0size1_ca[k] / self.characterCounterCA) # multiply by P(character | ca)
-						gl_score *= math.log(voc0size1_gl[k] / self.characterCounterGL) # multiply by P(character | gl)
-						es_score *= math.log(voc0size1_es[k] / self.characterCounterES) # multiply by P(character | es)
-						en_score *= math.log(voc0size1_en[k] / self.characterCounterEN) # multiply by P(character | en)
-						pt_score *= math.log(voc0size1_pt[k] / self.characterCounterPT) # multiply by P(character | pt)
-
-			# show scores
-			'''
-			print("EU SCORE:" + str(eu_score))
-			print("CA SCORE:" + str(ca_score))
-			print("GL SCORE:" + str(gl_score))
-			print("ES SCORE:" + str(es_score))
-			print("EN SCORE:" + str(en_score))
-			print("PT SCORE:" + str(pt_score))
-			'''
-
-		elif nGramInt == 2:
-			# for vocInt = 0 and nGramInt = 1
-
-			# index of the character we're scanning in the tweet
-			firstDigitIndex = 0
-			secondDigitIndex = 1
-
-			# initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-			eu_score = math.log(self.characterCounterEU / self.characterCounterTotal)
-			ca_score = math.log(self.characterCounterCA / self.characterCounterTotal)
-			gl_score = math.log(self.characterCounterGL / self.characterCounterTotal)
-			es_score = math.log(self.characterCounterES / self.characterCounterTotal)
-			en_score = math.log(self.characterCounterEN / self.characterCounterTotal)
-			pt_score = math.log(self.characterCounterPT / self.characterCounterTotal)
-
-			for x in range(len(tweet) - 1):
-
-				for k in voc0size2_eu.keys():
-					voc0size2_eu[k] += smoothingValue
-					voc0size2_ca[k] += smoothingValue
-					voc0size2_gl[k] += smoothingValue
-					voc0size2_es[k] += smoothingValue
-					voc0size2_en[k] += smoothingValue
-					voc0size2_pt[k] += smoothingValue
-
-				self.characterCounterEU += len(voc0size2_eu) * smoothingValue
-				self.characterCounterCA += len(voc0size2_ca) * smoothingValue
-				self.characterCounterGL += len(voc0size2_gl) * smoothingValue
-				self.characterCounterES += len(voc0size2_es) * smoothingValue
-				self.characterCounterEN += len(voc0size2_en) * smoothingValue
-				self.characterCounterPT += len(voc0size2_pt) * smoothingValue
-
-				# update the scores if the character is in the vocabulary
-				for k in voc0size2_eu.keys():
-					if tweet[firstDigitIndex] + tweet[secondDigitIndex] == k:
-						eu_score *= math.log(voc0size2_eu[k] / self.characterCounterEU) # multiply by P(character | eu)
-						ca_score *= math.log(voc0size2_ca[k] / self.characterCounterCA) # multiply by P(character | ca)
-						gl_score *= math.log(voc0size2_gl[k] / self.characterCounterGL) # multiply by P(character | gl)
-						es_score *= math.log(voc0size2_es[k] / self.characterCounterES) # multiply by P(character | es)
-						en_score *= math.log(voc0size2_en[k] / self.characterCounterEN) # multiply by P(character | en)
-						pt_score *= math.log(voc0size2_pt[k] / self.characterCounterPT) # multiply by P(character | pt)
-						firstDigitIndex += 1
-						secondDigitIndex += 1
-
-
-			# show scores
-			'''
-			print("EU SCORE:" + str(eu_score))
-			print("CA SCORE:" + str(ca_score))
-			print("GL SCORE:" + str(gl_score))
-			print("ES SCORE:" + str(es_score))
-			print("EN SCORE:" + str(en_score))
-			print("PT SCORE:" + str(pt_score))
-			'''
-
-		elif nGramInt == 3:
-			# for vocInt = 0 and nGramInt = 1
-
-			# index of the character we're scanning in the tweet
-			firstDigitIndex = 0
-			secondDigitIndex = 1
-			thirdDigitIndex = 2
-
-			# initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-			eu_score = math.log(self.characterCounterEU / self.characterCounterTotal)
-			ca_score = math.log(self.characterCounterCA / self.characterCounterTotal)
-			gl_score = math.log(self.characterCounterGL / self.characterCounterTotal)
-			es_score = math.log(self.characterCounterES / self.characterCounterTotal)
-			en_score = math.log(self.characterCounterEN / self.characterCounterTotal)
-			pt_score = math.log(self.characterCounterPT / self.characterCounterTotal)
-
-			for x in range(len(tweet) - 1):
-
-				for k in voc0size3_eu.keys():
-					voc0size3_eu[k] += smoothingValue
-					voc0size3_ca[k] += smoothingValue
-					voc0size3_gl[k] += smoothingValue
-					voc0size3_es[k] += smoothingValue
-					voc0size3_en[k] += smoothingValue
-					voc0size3_pt[k] += smoothingValue
-
-				self.characterCounterEU += len(voc0size3_eu) * smoothingValue
-				self.characterCounterCA += len(voc0size3_ca) * smoothingValue
-				self.characterCounterGL += len(voc0size3_gl) * smoothingValue
-				self.characterCounterES += len(voc0size3_es) * smoothingValue
-				self.characterCounterEN += len(voc0size3_en) * smoothingValue
-				self.characterCounterPT += len(voc0size3_pt) * smoothingValue
-
-				# update the scores if the character is in the vocabulary
-				# na
-				for k in voc0size3_eu.keys():
-					if tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex] == k:
-						eu_score *= math.log(voc0size3_eu[k] / self.characterCounterEU) # multiply by P(character | eu)
-						ca_score *= math.log(voc0size3_ca[k] / self.characterCounterCA) # multiply by P(character | ca)
-						gl_score *= math.log(voc0size3_gl[k] / self.characterCounterGL) # multiply by P(character | gl)
-						es_score *= math.log(voc0size3_es[k] / self.characterCounterES) # multiply by P(character | es)
-						en_score *= math.log(voc0size3_en[k] / self.characterCounterEN) # multiply by P(character | en)
-						pt_score *= math.log(voc0size3_pt[k] / self.characterCounterPT) # multiply by P(character | pt)
-						firstDigitIndex += 1
-						secondDigitIndex += 1
-						thirdDigitIndex += 1
-
-
-			# show scores
-			'''
-			print("EU SCORE:" + str(eu_score))
-			print("CA SCORE:" + str(ca_score))
-			print("GL SCORE:" + str(gl_score))
-			print("ES SCORE:" + str(es_score))
-			print("EN SCORE:" + str(en_score))
-			print("PT SCORE:" + str(pt_score))
-			'''
-
-		biggestValue = eu_score
-		answer = 'EU'
-
-		if ca_score > biggestValue:
-			biggestValue = ca_score
-			answer = 'CA'
-		if gl_score > biggestValue:
-			biggestValue = gl_score
-			answer = 'GL'
-		if es_score > biggestValue:
-			biggestValue = es_score
-			answer = 'ES'
-		if en_score > biggestValue:
-			biggestValue = en_score
-			answer = 'EN'
-		if pt_score > biggestValue:
-			biggestValue = pt_score
-			answer = 'PT'
-
-		#print("ANSWER: " + answer)
-
-		return answer
-
-
-	def train(self, path, fileName, nGramInt):
-		p = path # path to the folder with input files
-		f = fileName + '.txt' # the name of input file
-		fullPath = p + f # full path
-
-		tweetID =  ''
-		userID = ''
-		language = ''
-		tweet = ''
-
-		counter = 0
-
-		lineCounter = 0
-
-		if nGramInt == 1:
-
-			# read the input file
-			with open(fullPath, encoding="utf8") as f:
-				# split every number in a line
-				for line in f:
-					# populate every variable
-					for word in line.split("\t"):
-						if counter == 0:
-							tweetID = word
-							counter += 1 
-						elif counter == 1:
-							userID = word
-							counter += 1
-						elif counter == 2:
-							language = word
-							counter += 1
-						else:
-							tweet = word
-							counter = 0
-
-					if language == 'eu':
-
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterEU += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-							for k in voc0size1_eu.keys(): 
-								if tweet[x] == k:
-									voc0size1_eu[k] += 1
-					elif language == 'ca':
-						
-						tweetLength = len(tweet)
-
-						for x in range(0, tweetLength):
-							self.characterCounterTotal += 1
-							self.characterCounterCA += 1
-							for k in voc0size1_ca.keys():
-								if tweet[x] == k:
-									voc0size1_ca[k] += 1
-					elif language == 'gl':
-						
-						tweetLength = len(tweet)
-
-						for x in range(0, tweetLength):
-							self.characterCounterTotal += 1
-							self.characterCounterGL += 1
-							for k in voc0size1_gl.keys():
-								if tweet[x] == k:
-									voc0size1_gl[k] += 1
-					elif language == 'es':
-
-						tweetLength = len(tweet)
-
-						for x in range(0, tweetLength):
-							self.characterCounterTotal += 1
-							self.characterCounterES += 1
-							for k in voc0size1_es.keys():
-								if tweet[x] == k:
-									voc0size1_es[k] += 1
-					elif language == 'en':
-						
-						tweetLength = len(tweet)
-
-						for x in range(0, tweetLength):
-							self.characterCounterTotal += 1
-							self.characterCounterEN += 1
-							for k in voc0size1_en.keys():
-								if tweet[x] == k:
-									voc0size1_en[k] += 1
-					elif language == 'pt':
-						
-						tweetLength = len(tweet)
-
-						for x in range(0, tweetLength):
-							self.characterCounterTotal += 1
-							self.characterCounterPT += 1
-							for k in voc0size1_pt.keys():
-								if tweet[x] == k:
-									voc0size1_pt[k] += 1
-		elif nGramInt == 2:
-			# read the input file
-			with open(fullPath, encoding="utf8") as f:
-				# split every number in a line
-				for line in f:
-
-					firstDigitIndex = 0
-					secondDigitIndex = 1
-
-					# populate every variable
-					for word in line.split("\t"):
-						if counter == 0:
-							tweetID = word
-							counter += 1 
-						elif counter == 1:
-							userID = word
-							counter += 1
-						elif counter == 2:
-							language = word
-							counter += 1
-						else:
-							tweet = word
-							counter = 0	
-					if language == 'eu':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterEU += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-							for k in voc0size2_eu.keys(): 
-								if currentSubdivision == k:
-									voc0size2_eu[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-					elif language == 'ca':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterCA += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-							for k in voc0size2_ca.keys(): 
-								if currentSubdivision == k:
-									voc0size2_ca[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-					elif language == 'gl':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterGL += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-							for k in voc0size2_gl.keys(): 
-								if currentSubdivision == k:
-									voc0size2_gl[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-					elif language == 'es':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterES += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-							for k in voc0size2_es.keys():
-								if currentSubdivision == k:
-									voc0size2_es[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-					elif language == 'en':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterEN += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-							for k in voc0size2_en.keys(): 
-								if currentSubdivision == k:
-									voc0size2_en[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-					elif language == 'pt':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 1):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterPT += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-							for k in voc0size2_pt.keys(): 
-								if currentSubdivision == k:
-									voc0size2_pt[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-					lineCounter += 1
-
-					print()
-					print(lineCounter)
-					print()
-
-					print("------------------------")
-					print(self.characterCounterEN)
-					print(self.characterCounterCA)
-					print(self.characterCounterGL)
-					print(self.characterCounterES)
-					print(self.characterCounterEN)
-					print(self.characterCounterPT)
-					print(self.characterCounterTotal)
-
-		elif nGramInt == 3:
-			# read the input file
-			with open(fullPath, encoding="utf8") as f:
-				# split every number in a line
-				for line in f:
-
-					firstDigitIndex = 0
-					secondDigitIndex = 1
-					thirdDigitIndex = 2
-
-					# populate every variable
-					for word in line.split("\t"):
-						if counter == 0:
-							tweetID = word
-							counter += 1 
-						elif counter == 1:
-							userID = word
-							counter += 1
-						elif counter == 2:
-							language = word
-							counter += 1
-						else:
-							tweet = word
-							counter = 0	
-					if language == 'eu':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 2):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterEU += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							for k in voc0size3_eu.keys(): 
-								if currentSubdivision == k:
-									voc0size3_eu[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-							thirdDigitIndex += 1
-					elif language == 'ca':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 2):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterCA += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							for k in voc0size3_ca.keys(): 
-								if currentSubdivision == k:
-									voc0size3_ca[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-							thirdDigitIndex += 1
-					elif language == 'gl':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 2):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterGL += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							for k in voc0size3_gl.keys(): 
-								if currentSubdivision == k:
-									voc0size3_gl[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-							thirdDigitIndex += 1
-					elif language == 'es':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 2):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterES += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							for k in voc0size3_es.keys(): 
-								if currentSubdivision == k:
-									voc0size3_es[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-							thirdDigitIndex += 1
-					elif language == 'en':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 2):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterEN += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							for k in voc0size3_en.keys(): 
-								if currentSubdivision == k:
-									voc0size3_en[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-							thirdDigitIndex += 1
-					elif language == 'pt':
-						tweetLength = len(tweet) # length of the tweet being scanned
-						# iterate through each character in the tweet
-						for x in range(0, tweetLength - 2):
-							self.characterCounterTotal += 1 # increment total characters scanned
-							self.characterCounterPT += 1 # increment total EU characters scanned
-							# test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-							currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-							for k in voc0size3_pt.keys(): 
-								if currentSubdivision == k:
-									voc0size3_pt[k] += 1
-							firstDigitIndex += 1
-							secondDigitIndex += 1
-							thirdDigitIndex += 1
-					lineCounter += 1
-
-					print()
-					print(lineCounter)
-					print()
-
-					print("------------------------")
-					print(self.characterCounterEN)
-					print(self.characterCounterCA)
-					print(self.characterCounterGL)
-					print(self.characterCounterES)
-					print(self.characterCounterEN)
-					print(self.characterCounterPT)
-					print(self.characterCounterTotal)
-
-
-		# test score function with example tweet
-		#tweetEx1 = "Stoked to be part of the".lower()
-
-		#self.score(tweetEx1, 0, nGramInt, 0.5)
-
-
-	def scoreFile (self, path, fileName, nGramInt):
-		p = path # path to the folder with input files
-		f = fileName + '.txt' # the name of input file
-		fullPath = p + f # full path
-
-		tweetID =  ''
-		userID = ''
-		language = ''
-		tweet = ''
-
-		counter = 0
-		lineCounter = 0
-		rightCounter = 0
-
-		# read the input file
-		with open(fullPath, encoding="utf8") as f:
-			# split every number in a line
-			for line in f:
-				# populate every variable
-				for word in line.split("\t"):
-					if counter == 0:
-						tweetID = word
-						counter += 1 
-					elif counter == 1:
-						userID = word
-						counter += 1
-					elif counter == 2:
-						language = word
-						counter += 1
-					else:
-						tweet = word
-						counter = 0
-
-				print(lineCounter)
-				answer = self.score(tweet, 0, nGramInt, 0.5).lower()
-
-				if answer == language:
-					rightCounter += 1
-
-				lineCounter += 1
-
-			print(str(rightCounter) + "/" + str(lineCounter))
-
-
-# main
-AI_one = AI()
-<<<<<<< HEAD
-AI_one.train('./', 'training-tweets-half', 2)
-AI_one.scoreFile('./', 'test-tweets-given', 2)
-=======
-AI_one.train('./', 'training-tweets-half2', 3)
-=======
-    def __init__(self):
-        self.characterCounterEU = 0 # total number of EU characters scanned
-        self.characterCounterCA = 0 # total number of CA characters scanned
-        self.characterCounterGL = 0 # total number of GL characters scanned
-        self.characterCounterES = 0 # total number of ES characters scanned
-        self.characterCounterEN = 0 # total number of EN characters scanned
-        self.characterCounterPT = 0 # total number of PT characters scanned
-        self.characterCounterTotal = 0
-        self.eu_table = {}
-        self.ca_table = {}
-        self.gl_table = {}
-        self.es_table = {}
-        self.en_table = {}
-        self.pt_table = {}
-
-        # testTweet = 'blah blah blah'
-    def score(self, tweet, vocInt, nGramInt, smoothingValue):
-        if nGramInt == 1:
-
-
-            # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-            eu_score = math.log(self.characterCounterEU / self.characterCounterTotal) # P(eu)
-            ca_score = math.log(self.characterCounterCA / self.characterCounterTotal)
-            gl_score = math.log(self.characterCounterGL / self.characterCounterTotal)
-            es_score = math.log(self.characterCounterES / self.characterCounterTotal)
-            en_score = math.log(self.characterCounterEN / self.characterCounterTotal)
-            pt_score = math.log(self.characterCounterPT / self.characterCounterTotal)
-            
-=======
-'''
-Reynald Servera - 40043437
-Kenneth Serrano - 27056699
-Patrick Chan - 26661025
-
-Project 2 - Naive Bayes Classifier
-April 5th, 2020
-'''
-
-import math
-import time
-import re
 
 # Function to print sum 
 def checkKey(dict, key): 
@@ -774,46 +6,6 @@ def checkKey(dict, key):
         return True
     return False
 
-# Removes unwanted parts of tweets
-def removeRegEx(tweet):
-    #remove digits
-    copy = tweet
-    copy = ''.join([i for i in copy if not i.isdigit()])
-
-    #remove email
-    email = re.compile('\w+@\w+\.[a-z]{3}')
-    emailList = email.findall(copy)
-
-    for i in emailList:
-        copy = copy.replace(i, '')
-
-    ltList = re.findall(r'&lt;', copy)
-
-    for i in ltList:
-        copy = copy.replace(i, '')
-
-    #remove @userTags
-    userNames = re.compile('@\w+\s')
-    userNamesList = userNames.findall(copy)
-
-    for i in userNamesList:
-        copy = copy.replace(i, '')
-
-    #remove url
-    urlList = re.findall(r'(https?://[^\s]+)', copy)
-
-    for i in urlList:
-        copy = copy.replace(i, '')
-
-    emojiAndSymbolList = re.findall(r'[^\w\s,]', copy)
-
-    for i in emojiAndSymbolList:
-        copy = copy.replace(i, '')
-
-    return copy
-
-
-# create a 1D dictionary from a vocabulary stored in a list
 def createUnigramDictionary(vocabularyList):
     temporaryDictionary = {}
 
@@ -823,7 +15,6 @@ def createUnigramDictionary(vocabularyList):
 
     return temporaryDictionary
 
-# create a 2D dictionary from a vocabulary stored in a list
 def createBigramDictionary(vocabularyList):
 
     temporaryDictionary = {}
@@ -836,7 +27,6 @@ def createBigramDictionary(vocabularyList):
 
     return temporaryDictionary
 
-# create a 3D dictionary from a vocabulary stored in a list
 def createTrigramDictionary(vocabularyList):
     
     temporaryDictionary = {}
@@ -850,53 +40,30 @@ def createTrigramDictionary(vocabularyList):
 
     return temporaryDictionary
 
-# create class AI
+# create class
+
 class AI:
     def __init__(self):
-        self.eu_table = {} # dictionary that stores eu n-gram frequencies
-        self.ca_table = {} # dictionary that stores ca n-gram frequencies
-        self.gl_table = {} # dictionary that stores gl n-gram frequencies
-        self.es_table = {} # dictionary that stores es n-gram frequencies
-        self.en_table = {} # dictionary that stores en n-gram frequencies
-        self.pt_table = {} # dictionary that stores pt n-gram frequencies
-        self.eu_tweet_counter = 0 # counts the number of eu training tweets
-        self.ca_tweet_counter = 0 # counts the number of ca training tweets
-        self.gl_tweet_counter = 0 # counts the number of gl training tweets
-        self.es_tweet_counter = 0 # counts the number of es training tweets
-        self.en_tweet_counter = 0 # counts the number of en training tweets
-        self.pt_tweet_counter = 0 # counts the number of pt training tweets
-        self.total_tweet_counter = 0  # counts the number of total training tweets
+        self.eu_table = {}
+        self.ca_table = {}
+        self.gl_table = {}
+        self.es_table = {}
+        self.en_table = {}
+        self.pt_table = {}
 
-    # guesses a language of a given tweet by calculating the following for each language:
-    # ex: "I like cake!"
-    # Bigram
-    # log(P(language)) + log(P(i|l) + log(P(k|i)) ... and so on
-    #
-    # take the biggest score
-    def score(self, tweet, vocInt, nGramInt, smoothingValue):
-        # for unigram
+
+    def score(self, tweet, nGramInt, smoothingValue):
         if nGramInt == 1:
+            digitIndex = 0
 
-            digitIndex = 0 # index of the current character in the tweet
-
+            # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
             eu_score = 0
             ca_score = 0
             gl_score = 0
             es_score = 0
             en_score = 0
             pt_score = 0
-
-            # vocInt == 3 is our BYOM. In our BYOM, we do not consider the initial probability of the language log(P(language))
-            if vocInt != 3:
-                eu_score = math.log10(self.eu_tweet_counter/self.total_tweet_counter)
-                ca_score = math.log10(self.ca_tweet_counter/self.total_tweet_counter)
-                gl_score = math.log10(self.gl_tweet_counter/self.total_tweet_counter)
-                es_score = math.log10(self.es_tweet_counter/self.total_tweet_counter)
-                en_score = math.log10(self.en_tweet_counter/self.total_tweet_counter)
-                pt_score = math.log10(self.pt_tweet_counter/self.total_tweet_counter)
             
-            # apply smoothing to all frequency dictionaries
->>>>>>> Stashed changes
             for k in self.eu_table.keys():
                 self.eu_table[k] += smoothingValue
                 self.ca_table[k] += smoothingValue
@@ -905,36 +72,6 @@ class AI:
                 self.en_table[k] += smoothingValue
                 self.pt_table[k] += smoothingValue
 
-<<<<<<< Updated upstream
-            self.characterCounterEU += len(self.eu_table) * smoothingValue
-            self.characterCounterCA += len(self.ca_table) * smoothingValue
-            self.characterCounterGL += len(self.gl_table) * smoothingValue
-            self.characterCounterES += len(self.es_table) * smoothingValue
-            self.characterCounterEN += len(self.en_table) * smoothingValue
-            self.characterCounterPT += len(self.pt_table) * smoothingValue
-
-            for x in range(len(tweet)):
-                # update the scores if the character is in the vocabulary
-                for k in self.eu_table.keys():
-                    if tweet[x] == k:
-                        eu_score *= math.log(self.eu_table[k] / self.characterCounterEU) # multiply by P(character | eu)
-                        ca_score *= math.log(self.ca_table[k] / self.characterCounterCA) # multiply by P(character | ca)
-                        gl_score *= math.log(self.gl_table[k] / self.characterCounterGL) # multiply by P(character | gl)
-                        es_score *= math.log(self.es_table[k] / self.characterCounterES) # multiply by P(character | es)
-                        en_score *= math.log(self.en_table[k] / self.characterCounterEN) # multiply by P(character | en)
-                        pt_score *= math.log(self.pt_table[k] / self.characterCounterPT) # multiply by P(character | pt)
-
-            # show scores
-            '''
-            print("EU SCORE:" + str(eu_score))
-            print("CA SCORE:" + str(ca_score))
-            print("GL SCORE:" + str(gl_score))
-            print("ES SCORE:" + str(es_score))
-            print("EN SCORE:" + str(en_score))
-            print("PT SCORE:" + str(pt_score))
-            '''
-=======
-            # variables that will hold total number of ngrams in each language dictionary
             eu_totalCharacters = 0
             ca_totalCharacters = 0
             gl_totalCharacters = 0
@@ -942,7 +79,7 @@ class AI:
             en_totalCharacters = 0
             pt_totalCharacters = 0
 
-            # count all the ngrams in each language dictionary
+
             for x in self.eu_table.keys():
                 eu_totalCharacters += self.eu_table[x]
                 ca_totalCharacters += self.ca_table[x]
@@ -952,20 +89,16 @@ class AI:
                 pt_totalCharacters += self.pt_table[x]
 
 
-            # for each language calculate the probability of the current character
-            # score += log(P(x)), where x is a vocabulary character in the string 
+
             for y in range(len(tweet)):
                 if checkKey(self.eu_table, tweet[digitIndex]):
-                    eu_score += math.log10(self.eu_table[tweet[digitIndex]] / eu_totalCharacters) # multiply by P(character | eu)
-                    ca_score += math.log10(self.ca_table[tweet[digitIndex]] / ca_totalCharacters) # multiply by P(character | eu)
-                    gl_score += math.log10(self.gl_table[tweet[digitIndex]] / gl_totalCharacters) # multiply by P(character | eu)
-                    es_score += math.log10(self.es_table[tweet[digitIndex]] / es_totalCharacters) # multiply by P(character | eu)
-                    en_score += math.log10(self.en_table[tweet[digitIndex]] / en_totalCharacters) # multiply by P(character | eu)
-                    pt_score += math.log10(self.pt_table[tweet[digitIndex]] / pt_totalCharacters) # multiply by P(character | eu)
+                    eu_score += math.log(self.eu_table[tweet[digitIndex]] / eu_totalCharacters) # multiply by P(character | eu)
+                    ca_score += math.log(self.ca_table[tweet[digitIndex]] / ca_totalCharacters) # multiply by P(character | eu)
+                    gl_score += math.log(self.gl_table[tweet[digitIndex]] / gl_totalCharacters) # multiply by P(character | eu)
+                    es_score += math.log(self.es_table[tweet[digitIndex]] / es_totalCharacters) # multiply by P(character | eu)
+                    en_score += math.log(self.en_table[tweet[digitIndex]] / en_totalCharacters) # multiply by P(character | eu)
+                    pt_score += math.log(self.pt_table[tweet[digitIndex]] / pt_totalCharacters) # multiply by P(character | eu)
                 digitIndex += 1
-
-            # return the biggest score out of all languages
->>>>>>> Stashed changes
 
             biggestValue = eu_score
             answer = 'eu'
@@ -986,10 +119,9 @@ class AI:
                 biggestValue = pt_score
                 answer = 'pt'
 
-<<<<<<< Updated upstream
             #print("ANSWER: " + answer)
 
-            return answer, biggestValue, vocInt, smoothingValue
+            return answer, biggestValue, smoothingValue
 
 
 
@@ -1001,64 +133,7 @@ class AI:
             firstDigitIndex = 0
             secondDigitIndex = 1
 
-            # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-            eu_score = math.log(self.characterCounterEU / self.characterCounterTotal)
-            ca_score = math.log(self.characterCounterCA / self.characterCounterTotal)
-            gl_score = math.log(self.characterCounterGL / self.characterCounterTotal)
-            es_score = math.log(self.characterCounterES / self.characterCounterTotal)
-            en_score = math.log(self.characterCounterEN / self.characterCounterTotal)
-            pt_score = math.log(self.characterCounterPT / self.characterCounterTotal)
 
-            for x in range(len(tweet) - 1):
-
-                for k in self.eu_table.keys():
-                    self.eu_table[k] += smoothingValue
-                    self.ca_table[k] += smoothingValue
-                    self.gl_table[k] += smoothingValue
-                    self.es_table[k] += smoothingValue
-                    self.en_table[k] += smoothingValue
-                    self.pt_table[k] += smoothingValue
-
-                self.characterCounterEU += len(self.eu_table) * smoothingValue
-                self.characterCounterCA += len(self.ca_table) * smoothingValue
-                self.characterCounterGL += len(self.gl_table) * smoothingValue
-                self.characterCounterES += len(self.es_table) * smoothingValue
-                self.characterCounterEN += len(self.en_table) * smoothingValue
-                self.characterCounterPT += len(self.pt_table) * smoothingValue
-
-                # update the scores if the character is in the vocabulary
-                for k in self.eu_table.keys():
-                    if tweet[firstDigitIndex] + tweet[secondDigitIndex] == k:
-                        eu_score *= math.log(self.eu_table[k] / self.characterCounterEU) # multiply by P(character | eu)
-                        ca_score *= math.log(self.ca_table[k] / self.characterCounterCA) # multiply by P(character | ca)
-                        gl_score *= math.log(self.gl_table[k] / self.characterCounterGL) # multiply by P(character | gl)
-                        es_score *= math.log(self.es_table[k] / self.characterCounterES) # multiply by P(character | es)
-                        en_score *= math.log(self.en_table[k] / self.characterCounterEN) # multiply by P(character | en)
-                        pt_score *= math.log(self.pt_table[k] / self.characterCounterPT) # multiply by P(character | pt)
-                        firstDigitIndex += 1
-                        secondDigitIndex += 1
-
-
-            # show scores
-            '''
-            print("EU SCORE:" + str(eu_score))
-            print("CA SCORE:" + str(ca_score))
-            print("GL SCORE:" + str(gl_score))
-            print("ES SCORE:" + str(es_score))
-            print("EN SCORE:" + str(en_score))
-            print("PT SCORE:" + str(pt_score))
-            '''
-=======
-            return answer, biggestValue
-
-        # for bigram
-        elif nGramInt == 2:
-
-            # indexes for two characters at a time
-            firstDigitIndex = 0
-            secondDigitIndex = 1
-
-            # smooth every entry in the frequency dictionaries 
             for k in self.eu_table.keys():
                 for l in self.eu_table.keys():
                     self.eu_table[k][l] += smoothingValue
@@ -1068,6 +143,7 @@ class AI:
                     self.en_table[k][l] += smoothingValue
                     self.pt_table[k][l] += smoothingValue
 
+            # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
             eu_score = 0
             ca_score = 0
             gl_score = 0
@@ -1075,18 +151,6 @@ class AI:
             en_score = 0
             pt_score = 0
 
-            # vocInt == 3 is our BYOM. In our BYOM, we do not consider the initial probability of the language log(P(language))
-            if vocInt != 3:
-                # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-                eu_score = math.log10(self.eu_tweet_counter/self.total_tweet_counter)
-                ca_score = math.log10(self.ca_tweet_counter/self.total_tweet_counter)
-                gl_score = math.log10(self.gl_tweet_counter/self.total_tweet_counter)
-                es_score = math.log10(self.es_tweet_counter/self.total_tweet_counter)
-                en_score = math.log10(self.en_tweet_counter/self.total_tweet_counter)
-                pt_score = math.log10(self.pt_tweet_counter/self.total_tweet_counter)
-
-            # for each language calculate the probability of two consecutive characters
-            # score += log(P(x | y)), where x is a vocabulary character in the string and y is the previous character
             for y in range(len(tweet) - 1):
                 if checkKey(self.eu_table, tweet[firstDigitIndex]):
                     if checkKey(self.eu_table, tweet[secondDigitIndex]):
@@ -1094,38 +158,36 @@ class AI:
                         firstCharacterTotal = 0
                         for x in self.eu_table[tweet[firstDigitIndex]].keys():
                             firstCharacterTotal += self.eu_table[tweet[firstDigitIndex]][x]
-                        eu_score += math.log10(self.eu_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
+                        eu_score += math.log(self.eu_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
                         
                         firstCharacterTotal = 0
                         for x in self.ca_table[tweet[firstDigitIndex]].keys():
                             firstCharacterTotal += self.ca_table[tweet[firstDigitIndex]][x]
-                        ca_score += math.log10(self.ca_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
+                        ca_score += math.log(self.ca_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
 
                         firstCharacterTotal = 0
                         for x in self.gl_table[tweet[firstDigitIndex]].keys():
                             firstCharacterTotal += self.gl_table[tweet[firstDigitIndex]][x]
-                        gl_score += math.log10(self.gl_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
+                        gl_score += math.log(self.gl_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
 
                         firstCharacterTotal = 0
                         for x in self.es_table[tweet[firstDigitIndex]].keys():
                             firstCharacterTotal += self.es_table[tweet[firstDigitIndex]][x]
-                        es_score += math.log10(self.es_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
+                        es_score += math.log(self.es_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
 
                         firstCharacterTotal = 0
                         for x in self.en_table[tweet[firstDigitIndex]].keys():
                             firstCharacterTotal += self.en_table[tweet[firstDigitIndex]][x]
-                        en_score += math.log10(self.en_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
+                        en_score += math.log(self.en_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
 
                         firstCharacterTotal = 0
                         for x in self.pt_table[tweet[firstDigitIndex]].keys():
                             firstCharacterTotal += self.pt_table[tweet[firstDigitIndex]][x]
-                        pt_score += math.log10(self.pt_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
+                        pt_score += math.log(self.pt_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]] / firstCharacterTotal) # multiply by P(character | eu)
 
                 firstDigitIndex += 1
                 secondDigitIndex += 1
             
-            # return the biggest score out of all languages
->>>>>>> Stashed changes
 
             biggestValue = eu_score
             answer = 'eu'
@@ -1146,79 +208,19 @@ class AI:
                 biggestValue = pt_score
                 answer = 'pt'
 
-<<<<<<< Updated upstream
             #print("ANSWER: " + answer)
 
-            return answer, biggestValue, vocInt, smoothingValue
+            return answer, biggestValue, smoothingValue
 
         elif nGramInt == 3:
             # for vocInt = 0 and nGramInt = 1
 
             # index of the character we're scanning in the tweet
-=======
-            return answer, biggestValue
-
-        # for trigram
-        elif nGramInt == 3:
-
-            # indexes for three characters at a time
->>>>>>> Stashed changes
             firstDigitIndex = 0
             secondDigitIndex = 1
             thirdDigitIndex = 2
 
-<<<<<<< Updated upstream
-            # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-            eu_score = math.log(self.characterCounterEU / self.characterCounterTotal)
-            ca_score = math.log(self.characterCounterCA / self.characterCounterTotal)
-            gl_score = math.log(self.characterCounterGL / self.characterCounterTotal)
-            es_score = math.log(self.characterCounterES / self.characterCounterTotal)
-            en_score = math.log(self.characterCounterEN / self.characterCounterTotal)
-            pt_score = math.log(self.characterCounterPT / self.characterCounterTotal)
 
-            for x in range(len(tweet) - 1):
-
-                for k in eu_table.keys():
-                    eu_table[k] += smoothingValue
-                    ca_table[k] += smoothingValue
-                    gl_table[k] += smoothingValue
-                    es_table[k] += smoothingValue
-                    en_table[k] += smoothingValue
-                    pt_table[k] += smoothingValue
-
-                self.characterCounterEU += len(eu_table) * smoothingValue
-                self.characterCounterCA += len(ca_table) * smoothingValue
-                self.characterCounterGL += len(gl_table) * smoothingValue
-                self.characterCounterES += len(es_table) * smoothingValue
-                self.characterCounterEN += len(en_table) * smoothingValue
-                self.characterCounterPT += len(pt_table) * smoothingValue
-
-                # update the scores if the character is in the vocabulary
-                # na
-                for k in eu_table.keys():
-                    if tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex] == k:
-                        eu_score *= math.log(eu_table[k] / self.characterCounterEU) # multiply by P(character | eu)
-                        ca_score *= math.log(ca_table[k] / self.characterCounterCA) # multiply by P(character | ca)
-                        gl_score *= math.log(gl_table[k] / self.characterCounterGL) # multiply by P(character | gl)
-                        es_score *= math.log(es_table[k] / self.characterCounterES) # multiply by P(character | es)
-                        en_score *= math.log(en_table[k] / self.characterCounterEN) # multiply by P(character | en)
-                        pt_score *= math.log(pt_table[k] / self.characterCounterPT) # multiply by P(character | pt)
-                        firstDigitIndex += 1
-                        secondDigitIndex += 1
-                        thirdDigitIndex += 1
-
-
-            # show scores
-            '''
-            print("EU SCORE:" + str(eu_score))
-            print("CA SCORE:" + str(ca_score))
-            print("GL SCORE:" + str(gl_score))
-            print("ES SCORE:" + str(es_score))
-            print("EN SCORE:" + str(en_score))
-            print("PT SCORE:" + str(pt_score))
-            '''
-=======
-            # smooth every entry in the frequency dictionaries 
             for k in self.eu_table.keys():
                 for l in self.eu_table.keys():
                     for m in self.eu_table.keys():
@@ -1229,6 +231,7 @@ class AI:
                         self.en_table[k][l][m] += smoothingValue
                         self.pt_table[k][l][m] += smoothingValue
 
+            # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
             eu_score = 0
             ca_score = 0
             gl_score = 0
@@ -1236,18 +239,6 @@ class AI:
             en_score = 0
             pt_score = 0
 
-            if vocInt != 3:
-                # initialize the scores to their respective probabilities, P(eu), P(ca), etc...
-                eu_score = math.log10(self.eu_tweet_counter/self.total_tweet_counter)
-                ca_score = math.log10(self.ca_tweet_counter/self.total_tweet_counter)
-                gl_score = math.log10(self.gl_tweet_counter/self.total_tweet_counter)
-                es_score = math.log10(self.es_tweet_counter/self.total_tweet_counter)
-                en_score = math.log10(self.en_tweet_counter/self.total_tweet_counter)
-                pt_score = math.log10(self.pt_tweet_counter/self.total_tweet_counter)
-
-
-            # for each language calculate the probability of three consecutive characters
-            # score += log(P(x | yz)), where x is a vocabulary character in the string and zy is the previous two characters            
             for y in range(len(tweet) - 2):
                 if checkKey(self.eu_table, tweet[firstDigitIndex]):
                     if checkKey(self.eu_table, tweet[secondDigitIndex]):
@@ -1256,39 +247,36 @@ class AI:
                             firstTwoCharactersTotal = 0
                             for x in self.eu_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]].keys():
                                 firstTwoCharactersTotal += self.eu_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][x]
-                            eu_score += math.log10(self.eu_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
+                            eu_score += math.log(self.eu_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
                             
                             firstTwoCharactersTotal = 0
                             for x in self.ca_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]].keys():
                                 firstTwoCharactersTotal += self.ca_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][x]
-                            ca_score += math.log10(self.ca_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
+                            ca_score += math.log(self.ca_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
 
                             firstTwoCharactersTotal = 0
                             for x in self.gl_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]].keys():
                                 firstTwoCharactersTotal += self.gl_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][x]
-                            gl_score += math.log10(self.gl_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
+                            gl_score += math.log(self.gl_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
 
                             firstTwoCharactersTotal = 0
                             for x in self.es_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]].keys():
                                 firstTwoCharactersTotal += self.es_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][x]
-                            es_score += math.log10(self.es_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
+                            es_score += math.log(self.es_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
 
                             firstTwoCharactersTotal = 0
                             for x in self.en_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]].keys():
                                 firstTwoCharactersTotal += self.en_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][x]
-                            en_score += math.log10(self.en_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
+                            en_score += math.log(self.en_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
 
                             firstTwoCharactersTotal = 0
                             for x in self.pt_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]].keys():
                                 firstTwoCharactersTotal += self.pt_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][x]
-                            pt_score += math.log10(self.pt_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
+                            pt_score += math.log(self.pt_table[tweet[firstDigitIndex]][tweet[secondDigitIndex]][tweet[thirdDigitIndex]] / firstTwoCharactersTotal) # multiply by P(character | eu)
 
                 firstDigitIndex += 1
                 secondDigitIndex += 1
                 thirdDigitIndex += 1
-
-            # return the biggest score out of all languages
->>>>>>> Stashed changes
 
             biggestValue = eu_score
             answer = 'eu'
@@ -1311,18 +299,10 @@ class AI:
 
             #print("ANSWER: " + answer)
 
-<<<<<<< Updated upstream
-            return answer, biggestValue, vocInt, smoothingValue
+            return answer, biggestValue, smoothingValue
 
 
-    def train(self, path, fileName, vocInt, nGramInt):
-=======
-            return answer, biggestValue
-
-    # training function:
-    # takes a training file loaded with tweets and fills in a frequency dictionary for every possible language
     def train(self, path, fileName, vocabularyList, vocInt, nGramInt):
->>>>>>> Stashed changes
         p = path # path to the folder with input files
         f = fileName + '.txt' # the name of input file
         fullPath = p + f # full path
@@ -1333,50 +313,14 @@ class AI:
         tweet = ''
 
         counter = 0
-<<<<<<< Updated upstream
 
-        euTrainingTweetNumber = 0
-        caTrainingTweetNumber = 0
-        glTrainingTweetNumber = 0
-        esTrainingTweetNumber = 0
-        enTrainingTweetNumber = 0
-        ptTrainingTweetNumber = 0
 
         lineCounter = 0
 
         # Temporary Counter
         randomCounter = 0
-        # vocabulary creation
-        if nGramInt == 1:
-            self.eu_table = createUnigramDictionary(alphabetListVoc0)
-            self.ca_table = createUnigramDictionary(alphabetListVoc0)
-            self.gl_table = createUnigramDictionary(alphabetListVoc0)
-            self.es_table = createUnigramDictionary(alphabetListVoc0)
-            self.en_table = createUnigramDictionary(alphabetListVoc0)
-            self.pt_table = createUnigramDictionary(alphabetListVoc0)
-        elif nGramInt == 2:
-            self.eu_table = createBigramDictionary(alphabetListVoc0)
-            self.ca_table = createBigramDictionary(alphabetListVoc0)
-            self.gl_table = createBigramDictionary(alphabetListVoc0)
-            self.es_table = createBigramDictionary(alphabetListVoc0)
-            self.en_table = createBigramDictionary(alphabetListVoc0)
-            self.pt_table = createBigramDictionary(alphabetListVoc0)
-        elif nGramInt == 3:
-            self.eu_table = createTrigramDictionary(alphabetListVoc0)
-            self.ca_table = createTrigramDictionary(alphabetListVoc0)
-            self.gl_table = createTrigramDictionary(alphabetListVoc0)
-            self.es_table = createTrigramDictionary(alphabetListVoc0)
-            self.en_table = createTrigramDictionary(alphabetListVoc0)
-            self.pt_table = createTrigramDictionary(alphabetListVoc0)
 
-
-
-        if nGramInt == 1:
-
-=======
-        lineCounter = 0
-
-        # dictionary creation
+        # table creation
         if nGramInt == 1:
             self.eu_table = createUnigramDictionary(vocabularyList)
             self.ca_table = createUnigramDictionary(vocabularyList)
@@ -1399,9 +343,10 @@ class AI:
             self.en_table = createTrigramDictionary(vocabularyList)
             self.pt_table = createTrigramDictionary(vocabularyList)
 
-        # for unigram
+
+
         if nGramInt == 1:
->>>>>>> Stashed changes
+
             # read the input file
             with open(fullPath, encoding="utf8") as f:
                 # split every number in a line
@@ -1421,15 +366,11 @@ class AI:
                             tweet = word
                             counter = 0
 
-<<<<<<< Updated upstream
                     if language == 'eu':
-                        euTrainingTweetNumber += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
                         # iterate through each character in the tweet
                         for x in range(0, tweetLength):
                             alreadyKey = False
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterEU += 1 # increment total EU characters scanned
                             # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
                             for k in self.eu_table.keys(): 
                                 if tweet[x] == k:
@@ -1437,38 +378,6 @@ class AI:
                                     alreadyKey = True
 
                             if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[tweet[x]] = 1
-                                	self.ca_table[tweet[x]] = 0
-                                	self.gl_table[tweet[x]] = 0
-                                	self.es_table[tweet[x]] = 0
-                                	self.en_table[tweet[x]] = 0
-                                	self.pt_table[tweet[x]] = 0
-                    elif language == 'ca':
-                        caTrainingTweetNumber += 1
-=======
-                    self.total_tweet_counter += 1 
-
-                    # for our BYOM, remove unwanted text from tweets
-                    if vocInt == 3:
-                        tweet = removeRegEx(tweet)
-
-                    # same process for every languages, but in their respective dictionaries.
-                    if language == 'eu':
-                        self.eu_tweet_counter += 1
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength):
-                            alreadyKey = False # if key doesn't exist yet
-                            # test all keys of the respective dictionary
-                            for k in self.eu_table.keys():
-                                # if the key is in the dictionary, increment it.
-                                if tweet[x] == k:
-                                    self.eu_table[k] += 1
-                                    alreadyKey = True
-                            # if vocInt == 2 (isalpha) or vocInt == 3 (BYOM),
-                            # then dynamically add keys to the dictionaries if isalpha() returns true and the key doesn't current exist.
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
                                 if tweet[x].isalpha():
                                     self.eu_table[tweet[x]] = 1
                                     self.ca_table[tweet[x]] = 0
@@ -1477,35 +386,16 @@ class AI:
                                     self.en_table[tweet[x]] = 0
                                     self.pt_table[tweet[x]] = 0
                     elif language == 'ca':
-                        self.ca_tweet_counter += 1
->>>>>>> Stashed changes
                         tweetLength = len(tweet)
 
                         for x in range(0, tweetLength):
                             alreadyKey = False
-<<<<<<< Updated upstream
-                            self.characterCounterTotal += 1
-                            self.characterCounterCA += 1
-=======
->>>>>>> Stashed changes
                             for k in self.ca_table.keys():
                                 if tweet[x] == k:
                                     self.ca_table[k] += 1
                                     alreadyKey = True
 
-<<<<<<< Updated upstream
                             if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[tweet[x]] = 0
-                                	self.ca_table[tweet[x]] = 1
-                                	self.gl_table[tweet[x]] = 0
-                                	self.es_table[tweet[x]] = 0
-                                	self.en_table[tweet[x]] = 0
-                                	self.pt_table[tweet[x]] = 0
-                    elif language == 'gl':
-                        glTrainingTweetNumber += 1
-=======
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
                                 if tweet[x].isalpha():
                                     self.eu_table[tweet[x]] = 0
                                     self.ca_table[tweet[x]] = 1
@@ -1514,35 +404,16 @@ class AI:
                                     self.en_table[tweet[x]] = 0
                                     self.pt_table[tweet[x]] = 0
                     elif language == 'gl':
-                        self.gl_tweet_counter += 1
->>>>>>> Stashed changes
                         tweetLength = len(tweet)
 
                         for x in range(0, tweetLength):
                             alreadyKey = False
-<<<<<<< Updated upstream
-                            self.characterCounterTotal += 1
-                            self.characterCounterGL += 1
-=======
->>>>>>> Stashed changes
                             for k in self.gl_table.keys():
                                 if tweet[x] == k:
                                     self.gl_table[k] += 1
                                     alreadyKey = True
 
-<<<<<<< Updated upstream
                             if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[tweet[x]] = 0
-                                	self.ca_table[tweet[x]] = 0
-                                	self.gl_table[tweet[x]] = 1
-                                	self.es_table[tweet[x]] = 0
-                                	self.en_table[tweet[x]] = 0
-                                	self.pt_table[tweet[x]] = 0
-                    elif language == 'es':
-                        esTrainingTweetNumber += 1
-=======
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
                                 if tweet[x].isalpha():
                                     self.eu_table[tweet[x]] = 0
                                     self.ca_table[tweet[x]] = 0
@@ -1551,35 +422,16 @@ class AI:
                                     self.en_table[tweet[x]] = 0
                                     self.pt_table[tweet[x]] = 0
                     elif language == 'es':
-                        self.es_tweet_counter += 1
->>>>>>> Stashed changes
                         tweetLength = len(tweet)
 
                         for x in range(0, tweetLength):
                             alreadyKey = False
-<<<<<<< Updated upstream
-                            self.characterCounterTotal += 1
-                            self.characterCounterES += 1
-=======
->>>>>>> Stashed changes
                             for k in self.es_table.keys():
                                 if tweet[x] == k:
                                     self.es_table[k] += 1
                                     alreadyKey = True
 
-<<<<<<< Updated upstream
                             if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[tweet[x]] = 0
-                                	self.ca_table[tweet[x]] = 0
-                                	self.gl_table[tweet[x]] = 0
-                                	self.es_table[tweet[x]] = 1
-                                	self.en_table[tweet[x]] = 0
-                                	self.pt_table[tweet[x]] = 0
-                    elif language == 'en':
-                        enTrainingTweetNumber += 1
-=======
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
                                 if tweet[x].isalpha():
                                     self.eu_table[tweet[x]] = 0
                                     self.ca_table[tweet[x]] = 0
@@ -1588,35 +440,16 @@ class AI:
                                     self.en_table[tweet[x]] = 0
                                     self.pt_table[tweet[x]] = 0
                     elif language == 'en':
-                        self.en_tweet_counter += 1
->>>>>>> Stashed changes
                         tweetLength = len(tweet)
 
                         for x in range(0, tweetLength):
                             alreadyKey = False
-<<<<<<< Updated upstream
-                            self.characterCounterTotal += 1
-                            self.characterCounterEN += 1
-=======
->>>>>>> Stashed changes
                             for k in self.en_table.keys():
                                 if tweet[x] == k:
                                     self.en_table[k] += 1
                                     alreadyKey = True
 
-<<<<<<< Updated upstream
                             if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[tweet[x]] = 0
-                                	self.ca_table[tweet[x]] = 0
-                                	self.gl_table[tweet[x]] = 0
-                                	self.es_table[tweet[x]] = 0
-                                	self.en_table[tweet[x]] = 1
-                                	self.pt_table[tweet[x]] = 0
-                    elif language == 'pt':
-                        ptTrainingTweetNumber += 1
-=======
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
                                 if tweet[x].isalpha():
                                     self.eu_table[tweet[x]] = 0
                                     self.ca_table[tweet[x]] = 0
@@ -1625,36 +458,16 @@ class AI:
                                     self.en_table[tweet[x]] = 1
                                     self.pt_table[tweet[x]] = 0
                     elif language == 'pt':
-                        self.pt_tweet_counter += 1
->>>>>>> Stashed changes
                         tweetLength = len(tweet)
 
                         for x in range(0, tweetLength):
                             alreadyKey = False
-<<<<<<< Updated upstream
-                            self.characterCounterTotal += 1
-                            self.characterCounterPT += 1
-=======
->>>>>>> Stashed changes
                             for k in self.pt_table.keys():
                                 if tweet[x] == k:
                                     self.pt_table[k] += 1
                                     alreadyKey = True
 
-<<<<<<< Updated upstream
                             if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[tweet[x]] = 0
-                                	self.ca_table[tweet[x]] = 0
-                                	self.gl_table[tweet[x]] = 0
-                                	self.es_table[tweet[x]] = 0
-                                	self.en_table[tweet[x]] = 0
-                                	self.pt_table[tweet[x]] = 1
-                
-
-        elif nGramInt == 2:
-=======
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
                                 if tweet[x].isalpha():
                                     self.eu_table[tweet[x]] = 0
                                     self.ca_table[tweet[x]] = 0
@@ -1664,20 +477,12 @@ class AI:
                                     self.pt_table[tweet[x]] = 1
                     lineCounter += 1
                     print(lineCounter)
-        # for bigram
         elif nGramInt == 2:
-
             lineNumber = 0
-
->>>>>>> Stashed changes
             # read the input file
             with open(fullPath, encoding="utf8") as f:
                 # split every number in a line
                 for line in f:
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                     firstDigitIndex = 0
                     secondDigitIndex = 1
 
@@ -1694,197 +499,13 @@ class AI:
                             counter += 1
                         else:
                             tweet = word
-<<<<<<< Updated upstream
-                            counter = 0	
+                            counter = 0 
+                    # "Ruano, el autor que escribía para Goebbels, sobre próximo libro d @RosaSalaRose : http://t.co/qSabWfvj92 vía @LaVanguardia"
                     if language == 'eu':
-                        euTrainingTweetNumber += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
                         # iterate through each character in the tweet
                         for x in range(0, tweetLength - 1):
                             alreadyKey = False
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterEU += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-                            for k in self.eu_table.keys(): 
-                                if currentSubdivision == k:
-                                    self.eu_table[k] += 1
-                                    alreadyKey = True
-
-                            if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[currentSubdivision] = 1
-                                	self.ca_table[currentSubdivision] = 0
-                                	self.gl_table[currentSubdivision] = 0
-                                	self.es_table[currentSubdivision] = 0
-                                	self.en_table[currentSubdivision] = 0
-                                	self.pt_table[currentSubdivision] = 0
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                    elif language == 'ca':
-                        caTrainingTweetNumber += 1
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 1):
-                            alreadyKey = False
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterCA += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-                            for k in self.ca_table.keys(): 
-                                if currentSubdivision == k:
-                                    self.ca_table[k] += 1
-                                    alreadyKey = True
-
-                            if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[currentSubdivision] = 0
-                                	self.ca_table[currentSubdivision] = 1
-                                	self.gl_table[currentSubdivision] = 0
-                                	self.es_table[currentSubdivision] = 0
-                                	self.en_table[currentSubdivision] = 0
-                                	self.pt_table[currentSubdivision] = 0
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                    elif language == 'gl':
-                        glTrainingTweetNumber += 1
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 1):
-                            alreadyKey = False
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterGL += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-                            for k in self.gl_table.keys(): 
-                                if currentSubdivision == k:
-                                    self.gl_table[k] += 1
-                                    alreadyKey = True
-
-                            if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[currentSubdivision] = 0
-                                	self.ca_table[currentSubdivision] = 0
-                                	self.gl_table[currentSubdivision] = 1
-                                	self.es_table[currentSubdivision] = 0
-                                	self.en_table[currentSubdivision] = 0
-                                	self.pt_table[currentSubdivision] = 0
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                    elif language == 'es':
-                        esTrainingTweetNumber += 1
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 1):
-                            alreadyKey = False
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterES += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-                            for k in self.es_table.keys():
-                                if currentSubdivision == k:
-                                    self.es_table[k] += 1
-                                    alreadyKey = True
-
-                            if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[currentSubdivision] = 0
-                                	self.ca_table[currentSubdivision] = 0
-                                	self.gl_table[currentSubdivision] = 0
-                                	self.es_table[currentSubdivision] = 1
-                                	self.en_table[currentSubdivision] = 0
-                                	self.pt_table[currentSubdivision] = 0
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                    elif language == 'en':
-                        enTrainingTweetNumber += 1
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 1):
-                            alreadyKey = False
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterEN += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-                            for k in self.en_table.keys(): 
-                                if currentSubdivision == k:
-                                    self.en_table[k] += 1
-                                    alreadyKey = True
-
-                            if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[currentSubdivision] = 0
-                                	self.ca_table[currentSubdivision] = 0
-                                	self.gl_table[currentSubdivision] = 0
-                                	self.es_table[currentSubdivision] = 0
-                                	self.en_table[currentSubdivision] = 1
-                                	self.pt_table[currentSubdivision] = 0
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                    elif language == 'pt':
-                        ptTrainingTweetNumber += 1
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 1):
-                            alreadyKey = False
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterPT += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex]
-                            for k in self.pt_table.keys(): 
-                                if currentSubdivision == k:
-                                    self.pt_table[k] += 1
-                                    alreadyKey = True
-
-                            if vocInt == 2 and alreadyKey == False:
-                            	if tweet[x].isalpha():
-                                	self.eu_table[currentSubdivision] = 0
-                                	self.ca_table[currentSubdivision] = 0
-                                	self.gl_table[currentSubdivision] = 0
-                                	self.es_table[currentSubdivision] = 0
-                                	self.en_table[currentSubdivision] = 0
-                                	self.pt_table[currentSubdivision] = 1
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                    lineCounter += 1
-
-                    print()
-                    print(lineCounter)
-                    print()
-
-                    print("------------------------")
-                    print(self.characterCounterEN)
-                    print(self.characterCounterCA)
-                    print(self.characterCounterGL)
-                    print(self.characterCounterES)
-                    print(self.characterCounterEN)
-                    print(self.characterCounterPT)
-                    print(self.characterCounterTotal)
-
-        elif nGramInt == 3:
-=======
-                            counter = 0
-
-                    self.total_tweet_counter += 1
-
-                    # for our BYOM, remove unwanted text from tweets
-                    if vocInt == 3:
-                        tweet = removeRegEx(tweet)
-
-                    # same process for every languages, but in their respective dictionaries.
-                    if language == 'eu':
-                        self.eu_tweet_counter += 1
-                        tweetLength = len(tweet) # length of the tweet being scanned
-
-                        # iterate through each set of two characters in the tweet
-                        for x in range(0, tweetLength - 1):
-                            alreadyKey = False # if key doesn't exist yet
 
                             firstCharacter = tweet[firstDigitIndex]
                             secondCharacter = tweet[secondDigitIndex]
@@ -1893,7 +514,6 @@ class AI:
                                 if x == firstCharacter:
                                     for y in self.eu_table[x].keys():
                                         if y == secondCharacter:
-                                            # if both keys are present, increment the entry.
                                             self.eu_table[x][y] += 1
                                             alreadyKey = True
                                         if alreadyKey:
@@ -1901,22 +521,15 @@ class AI:
                                 if alreadyKey:
                                     break
 
-                            # if vocInt == 2 (isalpha) or vocInt == 3 (BYOM),
-                            # then dynamically add keys to the dictionaries if isalpha() returns true and the key sequence doesn't current exist..
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
-                                # if the bigram is accepted by isalpha(),
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha():
-                                    # if the first character is not a key in the dictionary,
                                     if not checkKey(self.eu_table, firstCharacter):
-                                        # create an entry of the character in the first level of the 2D dictionary
                                         self.eu_table[firstCharacter] = {}
                                         self.ca_table[firstCharacter] = {}
                                         self.gl_table[firstCharacter] = {}
                                         self.es_table[firstCharacter] = {}
                                         self.en_table[firstCharacter] = {}
                                         self.pt_table[firstCharacter] = {}
-
-                                        # fill in the second level of the dictionary at the new key index
                                         for x in self.eu_table.keys():
                                             self.eu_table[firstCharacter][x] = 0
                                             self.ca_table[firstCharacter][x] = 0
@@ -1924,7 +537,6 @@ class AI:
                                             self.es_table[firstCharacter][x] = 0
                                             self.en_table[firstCharacter][x] = 0
                                             self.pt_table[firstCharacter][x] = 0
-                                        # add the new character keys to all the second levels of the 2D dictionary
                                         for x in self.eu_table.keys():
                                             self.eu_table[x][firstCharacter] = 0
                                             self.ca_table[x][firstCharacter] = 0
@@ -1933,17 +545,13 @@ class AI:
                                             self.en_table[x][firstCharacter] = 0
                                             self.pt_table[x][firstCharacter] = 0
 
-                                    # if the second character is not a key in the dictionary,
                                     if not checkKey(self.eu_table, secondCharacter):
-                                        # create an entry of the character in the first level of the 2D dictionary
                                         self.eu_table[secondCharacter] = {}
                                         self.ca_table[secondCharacter] = {}
                                         self.gl_table[secondCharacter] = {}
                                         self.es_table[secondCharacter] = {}
                                         self.en_table[secondCharacter] = {}
                                         self.pt_table[secondCharacter] = {}
-
-                                        # fill in the second level of the dictionary at the new key index
                                         for x in self.eu_table.keys():
                                             self.eu_table[secondCharacter][x] = 0
                                             self.ca_table[secondCharacter][x] = 0
@@ -1951,8 +559,6 @@ class AI:
                                             self.es_table[secondCharacter][x] = 0
                                             self.en_table[secondCharacter][x] = 0
                                             self.pt_table[secondCharacter][x] = 0
-
-                                        # add the new character keys to all the second levels of the 2D dictionary
                                         for x in self.eu_table.keys():
                                             self.eu_table[x][secondCharacter] = 0
                                             self.ca_table[x][secondCharacter] = 0
@@ -1961,13 +567,10 @@ class AI:
                                             self.en_table[x][secondCharacter] = 0
                                             self.pt_table[x][secondCharacter] = 0
 
-                                    # increment the approriate entry of this new set of characters
                                     self.eu_table[firstCharacter][secondCharacter] += 1
-
                     elif language == 'ca':
-                        self.ca_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
-
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 1):
                             alreadyKey = False
 
@@ -1985,7 +588,7 @@ class AI:
                                 if alreadyKey:
                                     break
 
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha():
                                     if not checkKey(self.ca_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -2037,8 +640,8 @@ class AI:
                             firstDigitIndex += 1
                             secondDigitIndex += 1
                     elif language == 'gl':
-                        self.gl_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 1):
                             alreadyKey = False
 
@@ -2056,7 +659,7 @@ class AI:
                                 if alreadyKey:
                                     break
 
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha():
                                     if not checkKey(self.gl_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -2108,8 +711,8 @@ class AI:
                             firstDigitIndex += 1
                             secondDigitIndex += 1
                     elif language == 'es':
-                        self.es_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 1):
                             alreadyKey = False
 
@@ -2127,7 +730,7 @@ class AI:
                                 if alreadyKey:
                                     break
 
-                            if (vocInt == 2 or vocInt == 3)  and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha():
                                     if not checkKey(self.es_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -2179,8 +782,8 @@ class AI:
                             firstDigitIndex += 1
                             secondDigitIndex += 1
                     elif language == 'en':
-                        self.en_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 1):
                             alreadyKey = False
 
@@ -2198,7 +801,7 @@ class AI:
                                 if alreadyKey:
                                     break
 
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha():
                                     if not checkKey(self.en_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -2250,8 +853,8 @@ class AI:
                             firstDigitIndex += 1
                             secondDigitIndex += 1
                     elif language == 'pt':
-                        self.pt_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 1):
                             alreadyKey = False
 
@@ -2269,7 +872,7 @@ class AI:
                                 if alreadyKey:
                                     break
 
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha():
                                     if not checkKey(self.pt_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -2316,25 +919,18 @@ class AI:
                                             self.pt_table[x][secondCharacter] = 0
 
                                     self.pt_table[firstCharacter][secondCharacter] += 1
+
                                     
                             firstDigitIndex += 1
                             secondDigitIndex += 1
-
                     lineNumber += 1
-
                     print(lineNumber)
-        # for trigram
         elif nGramInt == 3:
             lineNumber = 0
->>>>>>> Stashed changes
             # read the input file
             with open(fullPath, encoding="utf8") as f:
                 # split every number in a line
                 for line in f:
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                     firstDigitIndex = 0
                     secondDigitIndex = 1
                     thirdDigitIndex = 2
@@ -2352,148 +948,13 @@ class AI:
                             counter += 1
                         else:
                             tweet = word
-<<<<<<< Updated upstream
-                            counter = 0	
-                    if language == 'eu':
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 2):
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterEU += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-                            for k in eu_table.keys(): 
-                                if currentSubdivision == k:
-                                    eu_table[k] += 1
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                            thirdDigitIndex += 1
-                    elif language == 'ca':
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 2):
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterCA += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-                            for k in ca_table.keys(): 
-                                if currentSubdivision == k:
-                                    ca_table[k] += 1
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                            thirdDigitIndex += 1
-                    elif language == 'gl':
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 2):
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterGL += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-                            for k in gl_table.keys(): 
-                                if currentSubdivision == k:
-                                    gl_table[k] += 1
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                            thirdDigitIndex += 1
-                    elif language == 'es':
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 2):
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterES += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-                            for k in es_table.keys(): 
-                                if currentSubdivision == k:
-                                    es_table[k] += 1
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                            thirdDigitIndex += 1
-                    elif language == 'en':
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 2):
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterEN += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-                            for k in en_table.keys(): 
-                                if currentSubdivision == k:
-                                    en_table[k] += 1
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                            thirdDigitIndex += 1
-                    elif language == 'pt':
-                        tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each character in the tweet
-                        for x in range(0, tweetLength - 2):
-                            self.characterCounterTotal += 1 # increment total characters scanned
-                            self.characterCounterPT += 1 # increment total EU characters scanned
-                            # test all keys of the respective dictionary (count all the n-grams in the current vocabulary)
-
-                            currentSubdivision = tweet[firstDigitIndex] + tweet[secondDigitIndex] + tweet[thirdDigitIndex]
-                            for k in pt_table.keys(): 
-                                if currentSubdivision == k:
-                                    pt_table[k] += 1
-                            firstDigitIndex += 1
-                            secondDigitIndex += 1
-                            thirdDigitIndex += 1
-                    lineCounter += 1
-
-                    # print()
-                    # print(lineCounter)
-                    # print()
-
-                    # print("------------------------")
-                    # print(self.characterCounterEN)
-                    # print(self.characterCounterCA)
-                    # print(self.characterCounterGL)
-                    # print(self.characterCounterES)
-                    # print(self.characterCounterEN)
-                    # print(self.characterCounterPT)
-                    # print(self.characterCounterTotal)
-
-
-        #for k in es_table.keys(): 
-        	#print(k + ":" + str(es_table[k]))
-        print("tweet training:")
-        print(euTrainingTweetNumber)
-        print(caTrainingTweetNumber)
-        print(glTrainingTweetNumber)
-        print(esTrainingTweetNumber)
-        print(enTrainingTweetNumber)
-        print(ptTrainingTweetNumber)
-        # test score function with example tweet
-        # tweetEx1 = "@AnderDelPozo @PesqueWhite hahaha yo tambien me he quedao pillao ahahha".lower()
-        self.scoreFile('./', 'test-tweets-given', nGramInt)
-
-
-    def scoreFile (self, path, fileName, nGramInt):
-        #Writing into the trace file for Unigram
-        randomCounter = 0
-=======
                             counter = 0 
-
-
-                    self.total_tweet_counter += 1
-
-                    # for our BYOM, remove unwanted text from tweets
-                    if vocInt == 3:
-                        tweet = removeRegEx(tweet)
-
-                    # same process for every languages, but in their respective dictionaries.
+                    # "Ruano, el autor que escribía para Goebbels, sobre próximo libro d @RosaSalaRose : http://t.co/qSabWfvj92 vía @LaVanguardia"
                     if language == 'eu':
-                        self.eu_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
-                        # iterate through each set of three characters in the tweet
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 2):
-                            alreadyKey = False # if key doesn't exist yet
+                            alreadyKey = False
 
                             firstCharacter = tweet[firstDigitIndex]
                             secondCharacter = tweet[secondDigitIndex]
@@ -2505,7 +966,6 @@ class AI:
                                         if y == secondCharacter:
                                             for z in self.eu_table[x][y].keys():
                                                 if z == thirdCharacter:
-                                                    # if the sequence of three characters exist in the dictionary, increment it
                                                     self.eu_table[x][y][z] += 1
                                                     alreadyKey = True
                                                 if alreadyKey:
@@ -2515,21 +975,15 @@ class AI:
                                 if alreadyKey:
                                         break
 
-                            # if vocInt == 2 (isalpha) or vocInt == 3 (BYOM),
-                            # then dynamically add keys to the dictionaries if isalpha() returns true and the key sequence doesn't current exist.
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
-                                # if the trigram is accepted by isalpha(),
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha() and thirdCharacter.isalpha():
-                                    # if the first character is not in the vocabulary,
                                     if not checkKey(self.eu_table, firstCharacter):
-                                        # generate first level dictionary entry for that character
                                         self.eu_table[firstCharacter] = {}
                                         self.ca_table[firstCharacter] = {}
                                         self.gl_table[firstCharacter] = {}
                                         self.es_table[firstCharacter] = {}
                                         self.en_table[firstCharacter] = {}
                                         self.pt_table[firstCharacter] = {}
-                                        # generate base vocabulary entries in the new character entry
                                         for x in self.eu_table.keys():
                                             self.eu_table[firstCharacter][x] = {}
                                             self.ca_table[firstCharacter][x] = {}
@@ -2537,7 +991,6 @@ class AI:
                                             self.es_table[firstCharacter][x] = {}
                                             self.en_table[firstCharacter][x] = {}
                                             self.pt_table[firstCharacter][x] = {}
-                                        # generate second level dictionary entry in all the character entries
                                         for x in self.eu_table.keys():
                                             self.eu_table[x][firstCharacter] = {}
                                             self.ca_table[x][firstCharacter] = {}
@@ -2546,7 +999,7 @@ class AI:
                                             self.en_table[x][firstCharacter] = {}
                                             self.pt_table[x][firstCharacter] = {}
 
-                                        # generate second level dictionary entry for the new entry
+
                                         self.eu_table[firstCharacter][firstCharacter] = {}
                                         self.ca_table[firstCharacter][firstCharacter] = {}
                                         self.gl_table[firstCharacter][firstCharacter] = {}
@@ -2554,7 +1007,6 @@ class AI:
                                         self.en_table[firstCharacter][firstCharacter] = {}
                                         self.pt_table[firstCharacter][firstCharacter] = {}
 
-                                        # generate third level character entries for all entries that concern the new character
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[firstCharacter][x][y] = 0
@@ -2563,6 +1015,7 @@ class AI:
                                                 self.es_table[firstCharacter][x][y] = 0
                                                 self.en_table[firstCharacter][x][y] = 0
                                                 self.pt_table[firstCharacter][x][y] = 0
+
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[x][firstCharacter][y] = 0
@@ -2571,6 +1024,7 @@ class AI:
                                                 self.es_table[x][firstCharacter][y] = 0
                                                 self.en_table[x][firstCharacter][y] = 0
                                                 self.pt_table[x][firstCharacter][y] = 0
+
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[x][y][firstCharacter] = 0
@@ -2582,14 +1036,12 @@ class AI:
 
 
                                     if not checkKey(self.eu_table, secondCharacter):
-                                        # generate first level dictionary entry for that character
                                         self.eu_table[secondCharacter] = {}
                                         self.ca_table[secondCharacter] = {}
                                         self.gl_table[secondCharacter] = {}
                                         self.es_table[secondCharacter] = {}
                                         self.en_table[secondCharacter] = {}
                                         self.pt_table[secondCharacter] = {}
-                                        # generate base vocabulary entries in the new character entry
                                         for x in self.eu_table.keys():
                                             self.eu_table[secondCharacter][x] = {}
                                             self.ca_table[secondCharacter][x] = {}
@@ -2597,7 +1049,6 @@ class AI:
                                             self.es_table[secondCharacter][x] = {}
                                             self.en_table[secondCharacter][x] = {}
                                             self.pt_table[secondCharacter][x] = {}
-                                        # generate second level dictionary entry in all the character entries
                                         for x in self.eu_table.keys():
                                             self.eu_table[x][secondCharacter] = {}
                                             self.ca_table[x][secondCharacter] = {}
@@ -2606,7 +1057,7 @@ class AI:
                                             self.en_table[x][secondCharacter] = {}
                                             self.pt_table[x][secondCharacter] = {}
 
-                                        # generate second level dictionary entry for the new entry
+
                                         self.eu_table[secondCharacter][secondCharacter] = {}
                                         self.ca_table[secondCharacter][secondCharacter] = {}
                                         self.gl_table[secondCharacter][secondCharacter] = {}
@@ -2614,7 +1065,6 @@ class AI:
                                         self.en_table[secondCharacter][secondCharacter] = {}
                                         self.pt_table[secondCharacter][secondCharacter] = {}
 
-                                        # generate third level character entries for all entries that concern the new character
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[secondCharacter][x][y] = 0
@@ -2623,6 +1073,7 @@ class AI:
                                                 self.es_table[secondCharacter][x][y] = 0
                                                 self.en_table[secondCharacter][x][y] = 0
                                                 self.pt_table[secondCharacter][x][y] = 0
+
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[x][secondCharacter][y] = 0
@@ -2631,6 +1082,7 @@ class AI:
                                                 self.es_table[x][secondCharacter][y] = 0
                                                 self.en_table[x][secondCharacter][y] = 0
                                                 self.pt_table[x][secondCharacter][y] = 0
+
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[x][y][secondCharacter] = 0
@@ -2641,14 +1093,12 @@ class AI:
                                                 self.pt_table[x][y][secondCharacter] = 0
 
                                     if not checkKey(self.eu_table, thirdCharacter):
-                                        # generate first level dictionary entry for that character
                                         self.eu_table[thirdCharacter] = {}
                                         self.ca_table[thirdCharacter] = {}
                                         self.gl_table[thirdCharacter] = {}
                                         self.es_table[thirdCharacter] = {}
                                         self.en_table[thirdCharacter] = {}
                                         self.pt_table[thirdCharacter] = {}
-                                        # generate base vocabulary entries in the new character entry
                                         for x in self.eu_table.keys():
                                             self.eu_table[thirdCharacter][x] = {}
                                             self.ca_table[thirdCharacter][x] = {}
@@ -2656,7 +1106,6 @@ class AI:
                                             self.es_table[thirdCharacter][x] = {}
                                             self.en_table[thirdCharacter][x] = {}
                                             self.pt_table[thirdCharacter][x] = {}
-                                        # generate second level dictionary entry in all the character entries
                                         for x in self.eu_table.keys():
                                             self.eu_table[x][thirdCharacter] = {}
                                             self.ca_table[x][thirdCharacter] = {}
@@ -2665,15 +1114,13 @@ class AI:
                                             self.en_table[x][thirdCharacter] = {}
                                             self.pt_table[x][thirdCharacter] = {}
 
-                                        # generate second level dictionary entry for the new entry
+
                                         self.eu_table[thirdCharacter][thirdCharacter] = {}
                                         self.ca_table[thirdCharacter][thirdCharacter] = {}
                                         self.gl_table[thirdCharacter][thirdCharacter] = {}
                                         self.es_table[thirdCharacter][thirdCharacter] = {}
                                         self.en_table[thirdCharacter][thirdCharacter] = {}
                                         self.pt_table[thirdCharacter][thirdCharacter] = {}
-
-                                        # generate third level character entries for all entries that concern the new character                                                              
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[thirdCharacter][x][y] = 0
@@ -2682,6 +1129,7 @@ class AI:
                                                 self.es_table[thirdCharacter][x][y] = 0
                                                 self.en_table[thirdCharacter][x][y] = 0
                                                 self.pt_table[thirdCharacter][x][y] = 0
+
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[x][thirdCharacter][y] = 0
@@ -2690,6 +1138,8 @@ class AI:
                                                 self.es_table[x][thirdCharacter][y] = 0
                                                 self.en_table[x][thirdCharacter][y] = 0
                                                 self.pt_table[x][thirdCharacter][y] = 0
+
+
                                         for x in self.eu_table.keys():
                                             for y in self.eu_table.keys():
                                                 self.eu_table[x][y][thirdCharacter] = 0
@@ -2698,16 +1148,14 @@ class AI:
                                                 self.es_table[x][y][thirdCharacter] = 0
                                                 self.en_table[x][y][thirdCharacter] = 0
                                                 self.pt_table[x][y][thirdCharacter] = 0
-                                    # increment the approriate entry of this new set of characters
-                                    self.eu_table[firstCharacter][secondCharacter][thirdCharacter] += 1
 
+                                    self.eu_table[firstCharacter][secondCharacter][thirdCharacter] += 1
                             firstDigitIndex += 1
                             secondDigitIndex += 1
                             thirdDigitIndex += 1
-
                     if language == 'ca':
-                        self.ca_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 2):
                             alreadyKey = False
 
@@ -2730,7 +1178,7 @@ class AI:
                                 if alreadyKey:
                                         break
 
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha() and thirdCharacter.isalpha():
                                     if not checkKey(self.ca_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -2909,8 +1357,8 @@ class AI:
                             secondDigitIndex += 1
                             thirdDigitIndex += 1
                     if language == 'gl':
-                        self.gl_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 2):
                             alreadyKey = False
 
@@ -2933,7 +1381,7 @@ class AI:
                                 if alreadyKey:
                                         break
 
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha() and thirdCharacter.isalpha():
                                     if not checkKey(self.gl_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -3112,8 +1560,8 @@ class AI:
                             secondDigitIndex += 1
                             thirdDigitIndex += 1
                     if language == 'es':
-                        self.es_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 2):
                             alreadyKey = False
 
@@ -3136,7 +1584,7 @@ class AI:
                                 if alreadyKey:
                                         break
 
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha() and thirdCharacter.isalpha():
                                     if not checkKey(self.es_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -3315,8 +1763,8 @@ class AI:
                             secondDigitIndex += 1
                             thirdDigitIndex += 1
                     if language == 'en':
-                        self.en_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 2):
                             alreadyKey = False
 
@@ -3339,7 +1787,7 @@ class AI:
                                 if alreadyKey:
                                         break
 
-                            if (vocInt == 2 or vocInt == 3)and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha() and thirdCharacter.isalpha():
                                     if not checkKey(self.en_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -3518,8 +1966,8 @@ class AI:
                             secondDigitIndex += 1
                             thirdDigitIndex += 1
                     if language == 'pt':
-                        self.pt_tweet_counter += 1
                         tweetLength = len(tweet) # length of the tweet being scanned
+                        # iterate through each character in the tweet
                         for x in range(0, tweetLength - 2):
                             alreadyKey = False
 
@@ -3542,7 +1990,7 @@ class AI:
                                 if alreadyKey:
                                         break
 
-                            if (vocInt == 2 or vocInt == 3) and alreadyKey == False:
+                            if vocInt == 2 and alreadyKey == False:
                                 if firstCharacter.isalpha() and secondCharacter.isalpha() and thirdCharacter.isalpha():
                                     if not checkKey(self.pt_table, firstCharacter):
                                         self.eu_table[firstCharacter] = {}
@@ -3723,124 +2171,19 @@ class AI:
 
                     lineNumber += 1
                     print(lineNumber)                   
-    # function that will score each line of a test file and produce a trace file + a statistic file
+
     def scoreFile (self, path, fileName, vocInt, nGramInt, smoothingValue):
-
-        startTime = time.time()
-
+        #Writing into the trace file for Unigram
         tweetCounter = 0
 
         correctCounter = 0
 
->>>>>>> Stashed changes
         eu_tweet_counter = 0
         ca_tweet_counter = 0
         gl_tweet_counter = 0
         es_tweet_counter = 0
         en_tweet_counter = 0
         pt_tweet_counter = 0
-<<<<<<< Updated upstream
-        with open(path + "test-tweets-given.txt", encoding="utf8") as w:
-             for line in w:
-                 if randomCounter == 50:
-                     break
-
-                 word = line.split("\t")
-                 
-                 if word[2] == 'eu':
-                 	eu_tweet_counter += 1
-                 elif word[2] == 'ca':
-                 	ca_tweet_counter += 1
-                 elif word[2] == 'gl':
-                 	gl_tweet_counter += 1
-                 elif word[2] == 'es':
-                 	es_tweet_counter += 1
-                 elif word[2] == 'en':
-                 	en_tweet_counter += 1
-                 elif word[2] == 'pt':
-                 	pt_tweet_counter += 1
-
-                 guessedLanguage, guessedScore, vocInt, smoothingValue = self.score(word[3], 0, nGramInt, 0.5)
-                 if guessedLanguage == word[2]:
-                     correctOrNot = "Correct"
-                 else:
-                     correctOrNot = "Wrong"				
-                
-                 testPath ="trace_"+ str(vocInt) + "_"+ str(nGramInt)+ "_" + str(smoothingValue) + ".txt"
-                 writeFile = open(testPath,"a+", encoding="utf8")
-                 writeFile.write(word[0] + "  " + guessedLanguage + "  " + str(guessedScore) + "  " + word[2] + "  " + correctOrNot + "\n")
-                 writeFile.close()
-                
-                 randomCounter += 1
-                 '''
-        print(eu_tweet_counter)
-        print(ca_tweet_counter)
-        print(gl_tweet_counter)
-        print(es_tweet_counter)
-        print(en_tweet_counter)
-        print(pt_tweet_counter)
-        '''
-# main
-AI_one = AI()
-AI_one.train('./', 'training-tweets', 2, 2)
-#AI_one.scoreFile('./', 'test-tweets-given', 2)
-
-#Test
-
-
-
-
-
-# p = path # path to the folder with input files
-# 		f = fileName + '.txt' # the name of input file
-# 		fullPath = p + f # full path
-
-# 		tweetID =  ''
-# 		userID = ''
-# 		language = ''
-# 		tweet = ''
-
-# 		counter = 0
-# 		lineCounter = 0
-# 		rightCounter = 0
-
-# 		randomCounter = 0
-
-# 		# read the input file
-# 		with open(fullPath, encoding="utf8") as f:
-# 			# split every number in a line
-# 			for line in f:
-# 				# populate every variable
-# 				if randomCounter == 10:
-# 					break
-
-# 				for word in line.split("\t"):
-# 					if counter == 0:
-# 						tweetID = word
-# 						counter += 1 
-# 					elif counter == 1:
-# 						userID = word
-# 						counter += 1
-# 					elif counter == 2:
-# 						language = word
-# 						counter += 1
-# 					else:
-# 						tweet = word
-# 						counter = 0
-
-# 				testPath = "trace_0_"+str(nGramInt)+"_0.5.txt"
-# 				answer, score = self.score(tweet, 0, nGramInt, 0.5).lower()
-
-# 				if answer == language:
-# 		 			correctOrNot = "Correct"
-# 		 		else:
-# 		 			correctOrNot = "Wrong"
-                
-# 				writeFile = open(testPath,"a+", encoding="utf8")
-# 		 		writeFile.write(tweetID + "  " + answer + "  " + str(score) + "  " + language + "  " + correctOrNot + "\n")
-# 		 		writeFile.close()
->>>>>>> Stashed changes
-=======
 
         eu_tweet_counter_correct = 0
         ca_tweet_counter_correct = 0
@@ -3860,6 +2203,9 @@ AI_one.train('./', 'training-tweets', 2, 2)
             testPath ="trace_"+ str(vocInt) + "_"+ str(nGramInt)+ "_" + str(smoothingValue) + ".txt"
             writeFile = open(testPath,"w+", encoding="utf8")
             for line in w:
+                if tweetCounter == 20:
+                    break
+                tweetCounter += 1
                 word = line.split("\t")
                  
                 if word[2] == 'eu':
@@ -3875,11 +2221,7 @@ AI_one.train('./', 'training-tweets', 2, 2)
                 elif word[2] == 'pt':
                     pt_tweet_counter += 1
 
-                if vocInt != 3:
-                    guessedLanguage, guessedScore = self.score(word[3], vocInt, nGramInt, smoothingValue)
-                else:
-                    guessedLanguage, guessedScore = self.score(removeRegEx(word[3]), vocInt, nGramInt, smoothingValue)
-
+                guessedLanguage, guessedScore, smoothingValue = self.score(word[3], nGramInt, smoothingValue)
 
                 if guessedLanguage == 'eu':
                     eu_tweet_counter_guessed += 1
@@ -3912,29 +2254,11 @@ AI_one.train('./', 'training-tweets', 2, 2)
                 else:
                     correctOrNot = "Wrong"             
                 writeFile.write(word[0] + "  " + guessedLanguage + "  " + str(guessedScore) + "  " + word[2] + "  " + correctOrNot + "\n")
-                tweetCounter += 1
             writeFile.close()
         
         statisticFileName ="stat_"+ str(vocInt) + "_"+ str(nGramInt)+ "_" + str(smoothingValue) + ".txt"
         writeFile = open(statisticFileName,"w+", encoding="utf8")
         
-        writeFile.write("vocInt = " + str(vocInt) + ", nGramInt = " + str(nGramInt) + ", smoothingValue = " + str(smoothingValue) + "\n")
-        writeFile.write('\n')
-
-        # Training Info
-
-        writeFile.write("Training Information:\n")
-        writeFile.write("EU tweets: " + str(self.eu_tweet_counter) + "\n")
-        writeFile.write("CA tweets: " + str(self.ca_tweet_counter) + "\n")
-        writeFile.write("GL tweets: " + str(self.gl_tweet_counter) + "\n")
-        writeFile.write("ES tweets: " + str(self.es_tweet_counter) + "\n")
-        writeFile.write("EN tweets: " + str(self.en_tweet_counter) + "\n")
-        writeFile.write("PT tweets: " + str(self.pt_tweet_counter) + "\n")
-        writeFile.write("Total training tweets: " + str(self.total_tweet_counter) + "\n")
-
-
-        writeFile.write('\n')
-
         # Accuracy
         accuracy = 0
 
@@ -4103,11 +2427,8 @@ AI_one.train('./', 'training-tweets', 2, 2)
         writeFile.write("Weighted F1-measure:\n")
         writeFile.write("~" + str(round(weighted_average_F1 * 100, 2)) + "%\n")
 
-        writeFile.write('\n')
-
-        writeFile.write("Test Time: ~" + str(round((time.time() - startTime), 4)) + " seconds.")
-
         writeFile.close()
+
 
 # MAIN
 
@@ -4199,55 +2520,11 @@ trainFileName = 'training-tweets'
 testFileName = 'test-tweets-given'
 
 AI_one = AI()
-AI_two = AI()
-AI_three = AI()
-AI_four = AI()
-AI_five = AI()
 
-# BYOM
-
-AI_one_vocList = voc1
-AI_one_vocInt = 3
-AI_one_nGramInt = 2
-AI_one_smoothingValue = 1
+AI_one_vocList = voc0
+AI_one_vocInt = 0
+AI_one_nGramInt = 1
+AI_one_smoothingValue = 0.5
 
 AI_one.train(path, trainFileName, AI_one_vocList, AI_one_vocInt, AI_one_nGramInt)
 AI_one.scoreFile(path, testFileName , AI_one_vocInt, AI_one_nGramInt, AI_one_smoothingValue)
-
-# V=0, n=1, d=0
-
-AI_two_vocList = voc0
-AI_two_vocInt = 0
-AI_two_nGramInt = 1
-AI_two_smoothingValue = 0
-
-AI_two.train(path, trainFileName, AI_two_vocList, AI_two_vocInt, AI_two_nGramInt)
-AI_two.scoreFile(path, testFileName , AI_two_vocInt, AI_two_nGramInt, AI_two_smoothingValue)
-
-# V=1, n=2, d=0.5
-
-AI_three_vocList = voc1
-AI_three_vocInt = 1
-AI_three_nGramInt = 2
-AI_three_smoothingValue = 0.5
-
-AI_three.train(path, trainFileName, AI_three_vocList, AI_three_vocInt, AI_three_nGramInt)
-AI_three.scoreFile(path, testFileName , AI_three_vocInt, AI_three_nGramInt, AI_three_smoothingValue)
-
-AI_four_vocList = voc1
-AI_four_vocInt = 1
-AI_four_nGramInt = 3
-AI_four_smoothingValue = 1
-
-AI_four.train(path, trainFileName, AI_four_vocList, AI_four_vocInt, AI_four_nGramInt)
-AI_four.scoreFile(path, testFileName , AI_four_vocInt, AI_four_nGramInt, AI_four_smoothingValue)
-
-AI_five_vocList = voc1
-AI_five_vocInt = 2
-AI_five_nGramInt = 2
-AI_five_smoothingValue = 0.3
-
-AI_five.train(path, trainFileName, AI_five_vocList, AI_five_vocInt, AI_five_nGramInt)
-AI_five.scoreFile(path, testFileName , AI_five_vocInt, AI_five_nGramInt, AI_five_smoothingValue)
->>>>>>> Stashed changes
->>>>>>> ac7ed0efa26706851262a8d11e284bac02b99838
